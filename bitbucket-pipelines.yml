@@ -1,0 +1,147 @@
+# This is a sample build configuration for PHP.
+# Check our guides at https://confluence.atlassian.com/x/e8YWN for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+# image: php:7.1.29
+
+pipelines:
+  default:
+    - step:
+        name: Build Wordpress Core
+        size: 2x   # double memory (8GB) for this step
+        services:
+          - docker
+        caches:
+          - docker
+        script:
+          - apt-get update -y
+          - curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-Linux-x86_64 -o /usr/local/bin/docker-compose
+          - chmod +x /usr/local/bin/docker-compose
+          - cd web
+          - echo "ACF_PRO_KEY=$ACF_PRO_KEY" >> .env
+          - echo "GRAVITY_FORMS_KEY=$GRAVITY_FORMS_KEY" >> .env
+          - echo "WPML_SUBSCRIPTION_KEY=$WPML_SUBSCRIPTION_KEY" >> .env
+          - echo "WPML_USER_ID=$WPML_USER_ID" >> .env
+          - cd ../
+          - docker-compose -f docker-compose-bb.yml up  -d
+          - docker-compose ps
+          - docker exec $PROJECT_NAME composer install -d /var/www/web/
+        artifacts:
+          - web/**
+    - step:
+        name: Build Wordpress Theme
+        image: node:14.17.3
+        script:
+            - cd theme
+            - node -v
+            - npm install
+            - npm run build
+        artifacts:
+          - web/**
+  branches:
+    master:
+      - step:
+          name: Build Wordpress Core
+          size: 2x   # double memory (8GB) for this step
+          services:
+            - docker
+          caches:
+            - docker
+          script:
+            - apt-get update -y
+            - curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-Linux-x86_64 -o /usr/local/bin/docker-compose
+            - chmod +x /usr/local/bin/docker-compose
+            - cd web
+            - echo "ACF_PRO_KEY=$ACF_PRO_KEY" >> .env
+            - echo "GRAVITY_FORMS_KEY=$GRAVITY_FORMS_KEY" >> .env
+            - echo "WPML_SUBSCRIPTION_KEY=$WPML_SUBSCRIPTION_KEY" >> .env
+            - echo "WPML_USER_ID=$WPML_USER_ID" >> .env
+            - cd ../
+            - docker-compose -f docker-compose-bb.yml up  -d
+            - docker-compose ps
+            - docker exec $PROJECT_NAME composer install -d /var/www/web/
+          artifacts:
+            - web/**
+      - step:
+          name: Build Wordpress Theme
+          image: node:14.17.3
+          script:
+            - cd theme
+            - node -v
+            - npm install
+            - npm run build
+          artifacts:
+            - web/**
+      - step:
+          name: Deploy to staging
+          deployment: staging
+          trigger: manual  # Uncomment to make this a manual deployment.
+          script:
+            - pipe: atlassian/ssh-run:0.4.1
+              variables:
+                SSH_USER: $SSH_USER
+                SERVER: $SSH_SERVER
+                COMMAND: 'cd $FTP_PATH_STAGING
+                          && rm -f .env
+                          && echo "DB_USERNAME=$DB_USERNAME" >> .env
+                          && echo "DB_PASSWORD=$DB_PASSWORD" >> .env
+                          && echo "DB_HOSTNAME=$DB_HOSTNAME" >> .env
+                          && echo "DB_DATABASE_NAME=$DB_DATABASE_NAME" >> .env
+                          && echo "WP_DOMAIN_NAME=$WP_DOMAIN_NAME" >> .env
+                          && echo "DEBUG=$DEBUG" >> .env
+                          && echo "ACF_PRO_KEY=$ACF_PRO_KEY" >> .env
+                          && echo "GRAVITY_FORMS_KEY=$GRAVITY_FORMS_KEY" >> .env
+                          && echo "WPML_SUBSCRIPTION_KEY=$WPML_SUBSCRIPTION_KEY" >> .env
+                          && echo "WPML_USER_ID=$WPML_USER_ID" >> .env
+                          && echo "GTM_ACTIVE=$GTM_ACTIVE" >> .env
+                          && echo "GTM_KEY=$GTM_KEY" >> .env'
+            - pipe: atlassian/ftp-deploy:0.3.3
+              variables:
+                USER: $FTP_USER
+                PASSWORD: $FTP_PWD
+                SERVER: $FTP_HOST
+                REMOTE_PATH: $FTP_PATH_STAGING
+                LOCAL_PATH: 'web' # Optional
+                EXTRA_ARGS: '--exclude=vendor/ --exclude=wp/ --exclude=wp-content/plugins --exclude=wp-content/uploads --exclude=wp-content/languages --exclude=.env' # Optional.
+            - pipe: atlassian/ssh-run:0.4.1
+              variables:
+                SSH_USER: $SSH_USER
+                SERVER: $SSH_SERVER
+                COMMAND: 'cd $FTP_PATH_STAGING && composer clear-cache && composer install --no-interaction'
+      - step:
+          name: Deploy to production
+          deployment: production
+          trigger: manual  # Uncomment to make this a manual deployment.
+          script:
+            - pipe: atlassian/ssh-run:0.4.1
+              variables:
+                SSH_USER: $SSH_USER
+                SERVER: $SSH_SERVER
+                COMMAND: 'cd $FTP_PATH_PRODUCTION
+                          && rm -f .env
+                          && echo "DB_USERNAME=$DB_USERNAME" >> .env
+                          && echo "DB_PASSWORD=$DB_PASSWORD" >> .env
+                          && echo "DB_HOSTNAME=$DB_HOSTNAME" >> .env
+                          && echo "DB_DATABASE_NAME=$DB_DATABASE_NAME" >> .env
+                          && echo "WP_DOMAIN_NAME=$WP_DOMAIN_NAME" >> .env
+                          && echo "DEBUG=$DEBUG" >> .env
+                          && echo "ACF_PRO_KEY=$ACF_PRO_KEY" >> .env
+                          && echo "GRAVITY_FORMS_KEY=$GRAVITY_FORMS_KEY" >> .env
+                          && echo "WPML_SUBSCRIPTION_KEY=$WPML_SUBSCRIPTION_KEY" >> .env
+                          && echo "WPML_USER_ID=$WPML_USER_ID" >> .env
+                          && echo "GTM_ACTIVE=$GTM_ACTIVE" >> .env
+                          && echo "GTM_KEY=$GTM_KEY" >> .env'
+            - pipe: atlassian/ftp-deploy:0.3.3
+              variables:
+                USER: $FTP_USER
+                PASSWORD: $FTP_PWD
+                SERVER: $FTP_HOST
+                REMOTE_PATH: $FTP_PATH_PRODUCTION
+                LOCAL_PATH: 'web' # Optional
+                EXTRA_ARGS: '--exclude=vendor/ --exclude=wp/ --exclude=wp-content/plugins --exclude=wp-content/uploads --exclude=wp-content/languages --exclude=.env' # Optional.
+            - pipe: atlassian/ssh-run:0.4.1
+              variables:
+                SSH_USER: $SSH_USER
+                SERVER: $SSH_SERVER
+                COMMAND: 'cd $FTP_PATH_PRODUCTION && composer clear-cache && composer install --no-interaction'

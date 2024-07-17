@@ -1,0 +1,88 @@
+{
+    "key": "group_62d54c6c96e7d",
+    "title": "Project info",
+    "fields": [
+        {
+            "key": "field_62d54c7245c7c",
+            "label": "Referentie",
+            "name": "reference",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_62d54c9545c7d",
+            "label": "Klant",
+            "name": "Client",
+            "type": "post_object",
+            "instructions": "Kies een partner uit de lijst.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "company"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
+            "key": "field_62d54cb845c7e",
+            "label": "Locatie",
+            "name": "locations",
+            "type": "post_object",
+            "instructions": "Kies een locatie uit de lijst",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "location"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "project"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Projecten, work, referenties, services",
+    "show_in_rest": 0,
+    "modified": 1658147198
+}

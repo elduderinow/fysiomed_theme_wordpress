@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="nl">
+	<head>
+		{% include 'head.twig' %}
+		{{ function('wp_head') }}
+	</head>
+	<body>
+		{%  if (gtmActive == true) %}
+			<!-- Google Tag Manager (noscript) -->
+			<noscript>
+				<iframe src="https://www.googletagmanager.com/ns.html?id={{ gtmKey }}" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+			</noscript>
+			<!-- End Google Tag Manager (noscript) -->
+		{% endif %}
+		<div class="wrapper overflow-hidden" id="wrapper">
+			<div class="global--search-bar--wrapper">
+				{{global_search}}
+				<div class="search-bar--backdrop"></div>
+			</div>
+			<div class="login-lang--nav py-5 hidden lg:block">
+				<div class="inner-nav max-w-[1440px] mx-auto px-8 py-2">
+					<div class="flex justify-between">
+						<div class="usp--wrapper items-center gap-10 hidden lg:flex">
+							<div class="usp--item flex gap-2 items-center">
+								<i class="fas fa-check"></i>
+								<p>{{__('75 jaar ervaring')}}</p>
+							</div>
+							<div class="usp--item flex gap-2 items-center">
+								<i class="fas fa-check"></i>
+								<p>{{__('Persoonlijk advies')}}</p>
+							</div>
+							<div class="usp--item flex gap-2 items-center">
+								<i class="fas fa-check"></i>
+								<p>{{__('Integrale kwaliteitszorg')}}</p>
+							</div>
+						</div>
+						<div class="login-lang flex items-center gap-20">
+							<a href="/my-account" class="login flex items-center gap-4">
+								<p>{{__('Mijn Account')}}</p>
+								<i class="fas fa-user"></i>
+							</a>
+							<div class="lang-switch">
+								<div class="language-wrapper">
+									<p class="language-active">{{wpml_languages.current_lang}}<i class="fas fa-chevron-down"></i>
+									</p>
+									<ul class="language__select">
+										{% for lang in wpml_languages.languages %}
+											<li class="language ">
+												<a title="{{lang.translated_name}}" class="language-switcher" href="{{lang.url}}">{{lang.tag}}</a>
+											</li>
+										{% endfor %}
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% block mainNav %}
+				<div class="main-nav-container">
+					<div class="main-nav-inner max-width">
+						{% include 'partials/general/main-nav.twig' %}
+					</div>
+				</div>
+			{% endblock %}
+			<main class="" id="main">
+				<div id="route-wrapper" class="space-y-40" data-router-wrapper> {% block content %}{% endblock %}
+					</div>
+				</main>
+				{% include './partials/general/footer.twig' %}
+
+			</div>
+			{{ function('wp_footer') }}
+		</body>
+	</html>

@@ -1,0 +1,87 @@
+.login-lang--nav {
+    background-color: get-brand-color(primary, "500");
+
+    .inner-nav {
+        .flex {
+            justify-content: end;
+            @media (min-width: $breakpoint--lg) {
+                justify-content: space-between;
+            }
+        }
+
+        .lang-switch {
+            position: relative;
+            transform: translateY(3px);
+            z-index: 19;
+
+            .language-wrapper {
+                margin-top: -2.5px;
+
+                .language-active {
+                    @include header-style;
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: white;
+                    margin: 0;
+                    cursor: pointer;
+                    padding: 0 10px;
+                    text-transform: uppercase;
+
+                    i {
+                        margin-left: 10px;
+                        font-size: 12px;
+                    }
+                }
+
+                ul.language__select {
+                    top: 0;
+                    right: 0;
+                    margin-top: 23px;
+                    position: absolute;
+                    padding: 0;
+                    display: none;
+                    width: 100%;
+
+                    a {
+                        @include header-style;
+                        font-size: 12px;
+                        font-weight: 600;
+                        color: white;
+                        width: 100%;
+                        text-transform: uppercase;
+                        margin: 0;
+                    }
+
+                    li {
+                        list-style: none;
+                        cursor: pointer;
+                        transition: 0.2s;
+
+                        a {
+                            display: block;
+                            background-color: get-brand-color(secondary, "500");
+                            padding: 10px 10px;
+                            width: 57px;
+                            text-decoration: none;
+
+                            &:hover {
+                                background-color: lighten(get-brand-color(secondary, "500"), 10%);
+                            }
+                        }
+                    }
+                }
+
+                &:hover {
+                    ul.language__select {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+
+    p,
+    i {
+        color: get-gray-color("white");
+    }
+}

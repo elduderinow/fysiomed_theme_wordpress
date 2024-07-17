@@ -1,0 +1,21 @@
+import swiper from './modules/swiper';
+import quantityCounter from './modules/quantity-counter';
+import searchBar from './modules/search-bar';
+import archiveFilter from './modules/archive-filter';
+import accordion from './modules/accordion';
+import navigation from './modules/navigation';
+import dropdowns from './modules/dropdowns';
+import slideIn from './modules/slideIn';
+import notifications from './modules/notifications';
+import handleDownloadFiles from './modules/handleDownloadFiles';
+
+swiper.init();
+quantityCounter.init();
+searchBar.init();
+archiveFilter.init();
+accordion.init();
+navigation.init();
+dropdowns.init();
+slideIn.init();
+notifications.init();
+handleDownloadFiles.init();

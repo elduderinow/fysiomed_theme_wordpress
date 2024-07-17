@@ -1,0 +1,14 @@
+<div class="card card-product--article flex flex-col space-y-10 justify-between h-full">
+	<div class="card-top">
+		{% include './partials/components/media--comp.twig' with {video:card.video, image:card.image, aspectRatio:image.aspectRatio} %}
+		<div class="px-6 pt-6 card-body">
+			<p class="card-date">{{card.date|date('d/m/Y')}}</p>
+			<h4 class="h4-text mb-10 card-title">{{ card.title }}</h4>
+			<div class="richtext">{{ card.intro }}</div>
+		</div>
+	</div>
+	<div class="card-bottom px-6 pb-6 card-buttons">
+		{% include './partials/components/button.twig' with {url:button.url, text:button.text, style:button.style} %}
+		{% include './partials/components/button.twig' with {url:card.permalink, text:readMore.text, style:readMore.style} %}
+	</div>
+</div>

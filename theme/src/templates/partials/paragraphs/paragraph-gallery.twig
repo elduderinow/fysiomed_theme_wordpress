@@ -1,0 +1,38 @@
+<div class="paragraph paragraph--gallery max-width gsap-slide">
+	<div class="paragraph paragraph--gallery pl-6">
+		<div class="grid grid-cols-12 gap-6">
+			<div class="col-span-12">
+				<h2 class="h2-text mb-5">{{__('Categorieën')}}</h2>
+				<p class="w-full pr-6 md:w-1/2 mb-5 p-text">{{__('Wij bieden een breed scala aan apparatuur die is ontworpen om fysiotherapeuten te helpen bij het behandelen van een verscheidenheid aan aandoeningen en blessures.')}}
+				</p>
+			</div>
+			<div class="col-span-12">
+				<div class="slider__content">
+					<div class="swiper-container">
+						<div class="swiper-wrapper">
+							{% for cat in categories %}
+								<div class="swiper-slide slide--item">
+									<div class="slider-wrapper">
+										<a class="block" href="{{ cat.link }}" title="{{ cat.title }}">
+											{% if (cat.image) %}
+												{% include './partials/components/media--comp.twig' with {image: cat.image, video:video, placeholder:placeholderUrl, aspectRatio:'1/1', position:position} %}
+											{% endif %}
+										</a>
+										<h5 class="pt-10 font-bold block h5-text">{{ cat.title }}</h5>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+						<div class="swiper-button-prev">
+							<div class="button--inner"></div>
+						</div>
+						<div class="swiper-button-next">
+							<div class="button--inner"></div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

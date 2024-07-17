@@ -1,0 +1,124 @@
+@mixin contactinfo {
+    width: calc((100% / 12) * 10);
+    padding: 3rem;
+}
+
+@mixin inputFields {
+    background-color: get-gray-color("100");
+    border: 1px solid get-gray-color("200");
+    &:focus {
+        outline: none;
+        border: 1px solid get-brand-color(primary, "500");
+    }
+}
+.page-contact {
+    // .gform_wrapper {
+    //     margin-top: 4rem;
+
+    //     &.gravity-theme .gform_validation_errors {
+    //         background-color: rgba(0, 0, 0, 0);
+    //         padding: 0;
+    //         border: none;
+    //         box-shadow: none;
+
+    //         h2 {
+    //             @include p-text;
+    //             color: get-status-color(error, "500");
+    //         }
+    //     }
+
+    //     form {
+    //         .gform_fields {
+    //             @apply space-y-6;
+    //             label.gfield_label {
+    //                 @include p-text;
+    //             }
+    //             textarea,
+    //             input {
+    //                 @include p-text;
+    //                 @include inputFields;
+    //                 &[aria-invalid="true"] {
+    //                     border: 1px solid get-status-color(error, "500");
+    //                 }
+    //             }
+
+    //             .validation_message {
+    //                 background-color: rgba(0, 0, 0, 0);
+    //                 padding: 0;
+    //                 border: none;
+    //                 @include p-text;
+    //                 color: get-status-color(error, "500");
+    //             }
+    //         }
+    //         .gform_footer {
+    //             input[type="submit"] {
+    //                 @include buttonBase;
+    //                 background-color: get-brand-color(secondary, "500");
+    //                 border: none;
+    //                 font-weight: 700;
+    //             }
+    //         }
+    //     }
+    // }
+    .contact-side-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: -5rem;
+        @apply gap-y-8;
+        position: relative;
+        z-index: 2;
+
+        .opening-hours {
+            @include contactinfo;
+            background-color: get-brand-color(primary, "500");
+
+            p {
+                color: get-gray-color("white");
+            }
+        }
+        .contact-wrapper {
+            @include contactinfo;
+            color: get-gray-color("900");
+            .address,
+            .phone,
+            .email {
+                padding-left: 3rem;
+                position: relative;
+
+                &:after {
+                    content: "";
+                    font-family: "font awesome 5 pro";
+                    font-weight: 900;
+                    font-size: 16px;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    color: get-brand-color(primary, "500");
+                }
+            }
+
+            .address:after {
+                content: fa-content($fa-var-star-of-life);
+            }
+
+            .phone:after {
+                content: fa-content($fa-var-phone);
+            }
+
+            .email:after {
+                content: fa-content($fa-var-envelope);
+            }
+        }
+
+        @media (min-width: $breakpoint--lg) {
+            margin-right: calc((100% / 5) * 0.5);
+            align-items: flex-end;
+
+            .opening-hours,
+            .contact-wrapper {
+                width: calc((100% / 5) * 4);
+            }
+        }
+    }
+}

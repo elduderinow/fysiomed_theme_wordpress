@@ -1,0 +1,21 @@
+{% extends "base.twig" %}
+{% block content %}
+	<div class="woo--account-page pb-40">
+		<div class="max-width px-6">
+			<div class="grid grid-cols-12">
+				<div class="col-span-12">
+					{% do action('woocommerce_before_shop_loop') %}
+				</div>
+				<div class="col-span-12 mb-20">
+					{{ function('do_shortcode', '[woocommerce_my_account]') }}
+				</div>
+				{# <div class="account-image col-span-12 lg:col-span-6 lg:col-start-7">
+					{% include './partials/components/media--comp.twig' with {image:'https://images.unsplash.com/photo-1685945719932-8048cbc68ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3088&q=80'} %}
+				</div> #}
+				{% do action('woocommerce_after_shop_loop') %}
+				{% do action('woocommerce_after_main_content') %}
+			</div>
+		</div>
+	</div>
+
+{% endblock  %}

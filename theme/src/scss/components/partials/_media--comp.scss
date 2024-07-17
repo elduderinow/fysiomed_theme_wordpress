@@ -1,0 +1,49 @@
+.media--comp {
+    width: 100%;
+
+    .image-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+
+        img {
+            object-fit: cover;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .video-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .play-button {
+            z-index: 3;
+            background-color: get-brand-color(primary, "500");
+            padding: 0.6rem 1.2rem;
+            border-radius: 5rem;
+            i {
+                transform: translate(1px, 1px);
+                color: get-gray-color("white");
+            }
+        }
+        video,
+        img {
+            object-fit: cover;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        img {
+            z-index: 2;
+        }
+    }
+}

@@ -1,0 +1,32 @@
+.swiper-container {
+    // display: flex;
+    // align-items: center;
+    // width: 100%;
+
+    &.gallery-thumbs {
+        .swiper-slide {
+            opacity: 0.5;
+            cursor: pointer;
+            transition: opacity 0.3s ease-in-out;
+
+            &:hover {
+                opacity: 1;
+            }
+
+            &.swiper-slide-thumb-active {
+                opacity: 1;
+            }
+        }
+    }
+
+    .swiper-wrapper {
+        .swiper_navigation {
+            position: absolute;
+            background-color: red;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+    }
+}

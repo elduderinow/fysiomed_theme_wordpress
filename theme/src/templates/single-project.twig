@@ -1,0 +1,35 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    <section class="hero">
+        <h1>{{ project.title }}</h1>
+    </section>
+
+    <section class="content">
+        {% include './partials/cards/card-project.twig' with {'project': project} %}
+    </section>
+
+    <section class="image">
+        {% if (project.image) %}
+            {% include './partials/components/picture.twig' with { 'picture': project.image } %}
+        {% endif %}
+    </section>
+
+    <section class="paragraphs">
+        {% if project.paragraphs %}
+            {% for paragraph in project.paragraphs %}
+                {% include './partials/paragraphs/paragraphs.twig' %}
+            {% endfor %}
+        {% endif %}
+    </section>
+
+    {% block footer %}
+        {% include './partials/general/footer.twig' %}
+    {% endblock %}
+
+    <hr/>
+    <pre class="dump">
+    {{ dump(project) }}
+    </pre>
+    <hr/>
+{% endblock %}

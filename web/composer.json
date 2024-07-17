@@ -1,0 +1,209 @@
+{
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    },
+    {
+      "type": "composer",
+      "url": "https://composer.admincolumns.com"
+    },
+    {
+      "type": "vcs",
+      "url" : "https://dimitrileonidas@bitbucket.org/viavictor/price-by-user-role-for-woocommerce-pro.git"
+    },
+    {
+      "type": "vcs",
+      "url" : "https://dimitrileonidas@bitbucket.org/viavictor/fysiomed-products-import.git"
+    },
+    {
+      "type": "composer",
+      "url": "https://pivvenit.github.io/acf-composer-bridge/composer/v3/wordpress-plugin/"
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "junaidbhura/gravityforms",
+        "version": "dev-main",
+        "type": "wordpress-plugin",
+        "dist": {
+          "type": "zip",
+          "url": "https://www.gravityforms.com/"
+        },
+        "require": {
+          "junaidbhura/composer-wp-pro-plugins": "*"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "junaidbhura/gravityformsrecaptcha",
+        "version": "1.1",
+        "type": "wordpress-plugin",
+        "dist": {
+          "type": "zip",
+          "url": "https://www.gravityforms.com/"
+        },
+        "require": {
+          "junaidbhura/composer-wp-pro-plugins": "*"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "junaidbhura/gravityformsuserregistration",
+        "version": "5.1",
+        "type": "wordpress-plugin",
+        "dist": {
+          "type": "zip",
+          "url": "https://www.gravityforms.com/"
+        },
+        "require": {
+          "junaidbhura/composer-wp-pro-plugins": "*"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+          "name": "wpml/wpml-multilingual-cms",
+          "version": "4.6.5",
+          "type": "wordpress-plugin",
+          "dist": {
+              "type": "zip",
+              "url": "https://wpml.org/?download=6088&user_id={%WPML_USER_ID}&subscription_key={%WPML_SUBSCRIPTION_KEY}&t=1572509351&version={%VERSION}"
+          },
+          "require": {
+              "composer/installers": "^1.4",
+              "ffraenz/private-composer-installer": "^5.0"
+          }
+      }
+    },
+    {
+        "type": "package",
+        "package": {
+            "name": "wpml/wpml-string-translation",
+            "version": "3.2.7",
+            "type": "wordpress-plugin",
+            "dist": {
+                "type": "zip",
+                "url": "https://wpml.org/?download=6092&user_id={%WPML_USER_ID}&subscription_key={%WPML_SUBSCRIPTION_KEY}&t=1572509351&version={%VERSION}"
+            },
+            "require": {
+                "composer/installers": "^1.4",
+                "ffraenz/private-composer-installer": "^5.0"
+            }
+        }
+    },
+    {
+        "type": "package",
+        "package": {
+            "name": "wpml/wpml-media",
+            "version": "2.7.3",
+            "type": "wordpress-plugin",
+            "dist": {
+                "type": "zip",
+                "url": "https://wpml.org/?download=7474&user_id={%WPML_USER_ID}&subscription_key={%WPML_SUBSCRIPTION_KEY}&t=1572509351&version={%VERSION}"
+            },
+            "require": {
+                "composer/installers": "^1.4",
+                "ffraenz/private-composer-installer": "^5.0"
+            }
+        }
+    },
+    {
+        "type": "package",
+        "package": {
+            "name": "wpml/wpml-acfml",
+            "version": "2.0.5",
+            "type": "wordpress-plugin",
+            "dist": {
+                "type": "zip",
+                "url": "https://wpml.org/?download=1097589&user_id={%WPML_USER_ID}&subscription_key={%WPML_SUBSCRIPTION_KEY}&t=1687289718&version={%VERSION}"
+            },
+            "require": {
+                "composer/installers": "^1.4",
+                "ffraenz/private-composer-installer": "^5.0"
+            }
+        }
+    },
+    {
+      "type": "package",
+      "package": {
+          "name": "wpml/wpml-seo",
+          "version": "2.1.0",
+          "type": "wordpress-plugin",
+          "dist": {
+              "type": "zip",
+              "url": "https://wpml.org/?download=3566177&user_id={%WPML_USER_ID}&subscription_key={%WPML_SUBSCRIPTION_KEY}&t=1687289718&version={%VERSION}"
+          },
+          "require": {
+              "composer/installers": "^1.4",
+              "ffraenz/private-composer-installer": "^5.0"
+          }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+          "name": "wpml/woocommerce-multilingual",
+          "version": "5.3.5",
+          "type": "wordpress-plugin",
+          "dist": {
+              "type": "zip",
+              "url": "https://wpml.org/?download=637370&user_id={%WPML_USER_ID}&subscription_key={%WPML_SUBSCRIPTION_KEY}&t=1687289718&version={%VERSION}"
+          },
+          "require": {
+              "composer/installers": "^1.4",
+              "ffraenz/private-composer-installer": "^5.0"
+          }
+      }
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "johnpbloch/wordpress-core": "*",
+    "johnpbloch/wordpress-core-installer": "*",
+    "wpackagist-plugin/better-wp-security": "*",
+    "wpackagist-plugin/wordpress-seo": "*",
+    "wpackagist-plugin/duplicate-post": "*",
+    "wpackagist-plugin/classic-editor": "*",
+    "wpackagist-plugin/mailgun": "*",
+    "wpackagist-plugin/timber-library": "*",
+    "wpackagist-plugin/easy-svg": "*",
+    "wpackagist-plugin/maintenance":"*",
+    "wpackagist-plugin/webp-converter-for-media": "*",
+    "admin-columns/admin-columns-pro": "*",
+    "advanced-custom-fields/advanced-custom-fields-pro": "*",
+    "viavictor/price-by-user-role-for-woocommerce-pro": "*",
+    "fysiomed/fysiomed-products-import": "*",
+    "pivvenit/acf-pro-installer": "*",
+    "otgs/installer": "*",
+    "vlucas/phpdotenv": "5.4.x-dev",
+    "junaidbhura/gravityforms": "dev-main",
+    "junaidbhura/gravityformsrecaptcha": "*",
+    "junaidbhura/gravityformsuserregistration": "*",
+    "wpackagist-plugin/woocommerce":"8.0.2",
+    "wpml/wpml-multilingual-cms": "4.6.5",
+    "wpml/wpml-string-translation": "*",
+    "wpml/wpml-media": "*",
+    "wpml/wpml-acfml": "*",
+    "wpml/wpml-seo": "*",
+    "wpml/woocommerce-multilingual": "*"
+  },
+  "extra": {
+    "wordpress-install-dir": "wp"
+  },
+  "config": {
+    "allow-plugins": {
+      "ffraenz/private-composer-installer": true,
+      "pivvenit/acf-pro-installer": true,
+      "johnpbloch/wordpress-core-installer": true,
+      "composer/installers": true,
+      "junaidbhura/composer-wp-pro-plugins": true
+    }
+  },
+  "minimum-stability": "dev"
+}

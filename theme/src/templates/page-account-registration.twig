@@ -1,0 +1,21 @@
+{% extends "base.twig" %}
+{% block content %}
+	<div class="woo--account-page registration">
+		<div class="max-width px-6">
+			<div class="grid grid-cols-12">
+				<div class="col-span-12 md:col-span-5">
+					<div class="registration-form-container gform_wrapper pt-5 pb-20">
+						{{ function('do_shortcode', '[gravityform id="2" title="false" description="false"]') }}
+					</div>
+				</div>
+
+				<div class="col-span-12 md:col-span-6 md:col-start-7">
+					<div class="account-image col-span-12 lg:col-span-6 lg:col-start-7">
+						{% include './partials/components/media--comp.twig' with {image:page.image, position:'top'} %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock  %}

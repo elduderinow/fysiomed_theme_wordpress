@@ -1,0 +1,15 @@
+{% if type == 'button' %}
+	<button class="button--main button__{{style}} {{ classnames }}">
+		{% if icon is defined %}
+			<i class="fas fa-{{icon}}"></i>
+		{% endif %}
+		{{ text }}
+	</button>
+{% else %}
+	<a href="{{url}}" title="{{ text }}" class="button--main button__{{style}} {{ classnames }}">
+		{% if icon is defined %}
+			<i class="fas fa-{{icon}}"></i>
+		{% endif %}
+		{{ text }}
+	</a>
+{% endif %}

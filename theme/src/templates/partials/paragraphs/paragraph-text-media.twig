@@ -1,0 +1,30 @@
+
+<div class="paragraph text-media--comp gsap-slide {% if image.displaySize %} {{image.displaySize == 'full_width' ? 'large' : size }} {% else %} {{size}} {% endif %} image-{{textPosition == 'textLeft' ? 'right' :  'left'}}">
+	<div class="grid grid-cols-12">
+		<div class="image slide--item col-span-12 md:col-span-6">
+			{% include './partials/components/media--comp.twig' with {image:image,video:video, placeholder:placeholderUrl, aspectRatio:aspectRatio, position:position} %}
+		</div>
+		<div class="text slide--item col-span-12 md:col-span-6">
+			<div class="text--inner richtext py-40 bg-red">
+				{% if date %}
+					<p>{{date|date('d/m/Y')}}</p>
+				{% endif %}
+				{% if title %}
+					<h4 class="h4-text mb-5 card-title">{{ title }}</h4>
+				{% endif %}
+				<div class="main--text">
+					{{text}}
+				</div>
+				{% if textButton %}
+					{% include './partials/components/button.twig' with {url:textButton.url, text:textButton.title, style:'arrow'} %}
+				{% endif %}
+				{% if button and button.url %}
+					{% include './partials/components/button.twig' with {url:button.url, text:button.text, style:button.style} %}
+				{% endif %}
+				{% if readMore and readMore.url %}
+					{% include './partials/components/button.twig' with {url:readMore.url, text:readMore.text, style:readMore.style} %}
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>

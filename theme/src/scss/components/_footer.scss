@@ -1,0 +1,52 @@
+footer {
+    background-color: get-brand-color(primary, "500");
+
+    a,
+    p {
+        @include body-style;
+        color: get-gray-color("white");
+        font-size: 18px;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .title {
+        color: get-gray-color("white");
+    }
+
+    .address,
+    .phone,
+    .email {
+        padding-left: 3rem;
+        position: relative;
+
+        &:after {
+            font-family: "font awesome 5 pro";
+            font-weight: 900;
+            font-size: 16px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    }
+
+    .address:after {
+        content: fa-content($fa-var-star-of-life);
+    }
+
+    .phone:after {
+        content: fa-content($fa-var-phone);
+    }
+
+    .email:after {
+        content: fa-content($fa-var-envelope);
+    }
+
+    .fysio-logo {
+        img {
+            max-width: 250px;
+        }
+    }
+}

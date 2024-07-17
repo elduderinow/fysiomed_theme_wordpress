@@ -1,0 +1,249 @@
+@mixin inputFields {
+    background-color: get-gray-color("100");
+    border: 1px solid get-gray-color("200");
+    height: 5rem;
+    padding: 1rem;
+    border-radius: initial;
+    &:focus {
+        outline: none;
+        border: 1px solid get-brand-color(primary, "500");
+    }
+}
+
+@mixin errorText {
+    font-family: "futura-pt", sans-serif !important;
+    font-size: 1.4rem !important;
+    color: get-status-color(error, "500") !important;
+}
+
+.gform_wrapper {
+    margin-top: 4rem;
+
+    .gform_confirmation_message {
+        @include p-text;
+    }
+
+    &.gravity-theme {
+        .gform_validation_errors {
+            background-color: rgba(0, 0, 0, 0) !important;
+            padding: 1rem !important;
+            border: 1px solid get-status-color(error, "500") !important;
+            box-shadow: none !important;
+            border-radius: 0 !important;
+
+            h2,
+            a {
+                font-family: "futura-pt", sans-serif !important;
+                font-weight: 400 !important;
+                font-size: 1.4rem !important;
+                color: get-status-color(error, "500") !important;
+            }
+
+            &:focus-visible {
+                outline: none;
+            }
+        }
+    }
+
+    form {
+        .gform_fields {
+            @apply space-y-4;
+            label.gfield_label {
+                @include p-text;
+                margin-bottom: 0;
+            }
+            textarea,
+            input,
+            select {
+                @include p-text;
+                @include inputFields;
+                &[aria-invalid="true"] {
+                    border: 1px solid get-status-color(error, "500") !important;
+                }
+
+            }
+
+            .gfield_required span {
+                @include errorText;
+            }
+
+            .gfield_validation_message {
+                background-color: rgba(0, 0, 0, 0);
+                padding: 0;
+                border: none;
+                @include errorText;
+            }
+
+            .gfield--width-half {
+                margin-top: 0 !important;
+                grid-column: span 12 !important;
+
+                @media (640px <= width <= 768px) {
+                    grid-column: span 6 !important;
+                }
+
+                @media (min-width: $breakpoint--lg) {
+                    grid-column: span 6 !important;
+                }
+            }
+
+            .gfield {
+                .gfield_label,
+                .gform-field-label {
+                    @include p-text;
+                }
+                .password_input_container {
+                    padding: 0 !important;
+                }
+
+                .gfield_password_strength {
+                    @include p-text;
+                    border-width: thin;
+                }
+            }
+        }
+        .gform_footer {
+            input[type="submit"] {
+                @include buttonBase;
+                background-color: get-brand-color(secondary, "500");
+                border: none;
+                font-weight: 700;
+            }
+
+            .gform_button {
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.gform_confirmation_wrapper {
+    margin-top: 4rem;
+    background: get-brand-color(primary, '500');
+    padding: 1rem;
+    color: white;
+}
+
+.woocommerce {
+    form {
+        $gap: 1rem;
+
+        .woocommerce-NoticeGroup {
+            display: none;
+        }
+
+        .woo-form-fields-container {
+            textarea,
+            input,
+            select,
+            .select2-selection {
+                @include p-text;
+                @include inputFields;
+                border-radius: none !important;
+                &[aria-invalid="true"] {
+                    border: 1px solid get-status-color(error, "500") !important;
+                }
+            }
+
+            .form--checkbox {
+                @include p-text;
+                .woocommerce-form__label {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+
+                    input {
+                        width: 15px;
+                        height: 15px;
+                    }
+                }
+            }
+
+            .woo-form-fields {
+                @apply space-y-10;
+
+                .form-row {
+                    padding: 0;
+                    display: inline-block;
+                    width: 100%;
+
+                    &.form-row-first,
+                    &.form-row-last {
+                        width: 50%;
+                        padding: 0;
+                    }
+                    &.form-row-first {
+                        padding-right: calc($gap / 2);
+                    }
+                    &.form-row-last {
+                        padding-left: calc($gap / 2);
+                        margin-top: 0 !important;
+                    }
+
+                    .select2-selection {
+                        display: flex;
+                        align-items: center;
+                        .select2-selection__rendered {
+                            padding: 0;
+                        }
+                        .select2-selection__arrow {
+                            height: 100%;
+                        }
+
+                        .select2-dropdown {
+                            background-color: red;
+                        }
+                    }
+
+                    &.woocommerce-invalid {
+                        label {
+                            color: get-status-color(error, "500");
+                        }
+                        input.input-text {
+                            // @include inputFields;
+                            border: 1px solid get-status-color(error, "500");
+                        }
+                    }
+                }
+            }
+
+            &.woocommerce-shipping-fields {
+                .shipping_address {
+                    background-color: get-gray-color("100");
+                    padding: 2rem;
+                    margin: 2rem 0;
+
+                    textarea,
+                    input,
+                    select,
+                    .select2-selection {
+                        background-color: white !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.select2-container {
+    .select2-dropdown {
+        background-color: get-gray-color("100");
+        border: 1px solid get-gray-color("200");
+
+        .select2-search input {
+            @include inputFields;
+            @include p-text;
+            background-color: white;
+        }
+
+        .select2-results {
+            ul li {
+                @include p-text;
+                &.select2-results__option--highlighted {
+                    background-color: get-brand-color(primary, "500");
+                    color: white;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,140 @@
+@mixin dataStyling {
+    color: get-gray-color("700");
+    strong {
+        color: get-brand-color(primary, "500");
+    }
+}
+
+.woo--checkout-page {
+    .woocommerce-checkout-review-order {
+        .woocommerce-checkout-review-order-table {
+            border: none;
+        }
+
+        #payment.woocommerce-checkout-payment {
+            background: none;
+            border-radius: 0;
+
+            p {
+                color: black;
+            }
+        
+
+            ul {
+                border-bottom: none;
+                li {
+                    label {
+                        @include h6-text;
+                        color: black;
+                    }
+
+                    .payment_box {
+                        background-color: #0fbb9f;
+
+                        p {
+                            color: white;
+                        }
+
+                        &:before {
+                            border: 1em solid #0fbb9f;
+                            border-right-color: transparent;
+                            border-left-color: transparent;
+                            border-top-color: transparent;
+                        }
+                    }
+                }
+            }
+
+            .place-order {
+                .button--main {
+                    margin-top: 4rem;
+                }
+            }
+        }
+    }
+
+    .checkout-order--status {
+        @apply space-y-10;
+
+        section {
+            border-top: 1px solid get-gray-color("200");
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+
+            &:first-child {
+                border-top: none;
+                padding-top: 0;
+            }
+        }
+
+        .checkout-order--received {
+            @apply space-y-12;
+            .woocommerce-order-overview {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                li {
+                    border: none;
+                    padding-right: 0;
+                    margin-right: 0;
+                    flex-grow: 1;
+
+                    @include dataStyling;
+                }
+
+                @media (min-width: $breakpoint--md) {
+                    flex-direction: row;
+                    justify-content: space-between;
+                    gap: 0;
+                }
+            }
+        }
+
+        .woocommerce-bacs-bank-details {
+            @apply space-y-10;
+
+            .wc-bacs-bank-details-heading {
+                @include h5-text;
+            }
+            .wc-bacs-bank-details-account-name {
+                @include h6-text;
+                display: none;
+            }
+            .wc-bacs-bank-details {
+                margin-bottom: 0;
+
+                li {
+                    @include dataStyling;
+                }
+            }
+        }
+
+        .woocommerce-order-details {
+            .woocommerce-order-details__title {
+                @include h5-text;
+            }
+            .woocommerce-table {
+                margin-top: 3rem;
+                border: 1px solid get-gray-color("200");
+                border-radius: 0;
+                @include p-text;
+            }
+        }
+
+        .woocommerce-customer-details {
+            .woocommerce-column__title {
+                @include h5-text;
+            }
+
+            address {
+                @include p-text;
+                border: none;
+                padding: 0;
+                margin-top: 1rem;
+                a {
+                    color: get-brand-color(primary, '500');
+                }
+            }
+        }
+    }
+}

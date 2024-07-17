@@ -1,0 +1,96 @@
+.products_filter {
+    @apply space-y-1;
+
+    .wp-block-heading {
+        @include h5-text;
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        display: none;
+    }
+
+    .wc-block-product-search {
+        label {
+            display: none;
+        }
+
+        input {
+            &:focus {
+                border-color: get-brand-color(primary, "500");
+                outline: 1px solid get-brand-color(primary, "500");
+            }
+        }
+    }
+
+    .wc-block-product-categories {
+        margin-top: -1.5rem;
+        @include p-text;
+
+        ul {
+            li.wc-block-product-categories-list-item {
+                span.wc-block-product-categories-list-item-count {
+                    color: get-gray-color("400");
+                }
+
+                a {
+                    &:hover {
+                        color: get-brand-color(primary, "500");
+                    }
+                }
+
+                // ul.wc-block-product-categories-list--depth-1 {
+                //     li.wc-block-product-categories-list-item {
+                //         &:not(:nth-child(1)) {
+                //             font-weight: 400;
+                //             padding-left: 1.5rem;
+                //         }
+                //     }
+                // }
+            }
+        }
+
+        ul.wc-block-product-categories-list {
+            &--depth-0 {
+                li {
+                    margin-top: 1rem;
+                    color: black;
+                    font-weight: 600;
+                }
+            }
+            &--depth-1 {
+                li {
+                    padding-left: 1rem;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+
+    // .wp-block-woocommerce-price-filter {
+    //     .wc-block-price-filter__range-input-wrapper {
+    //         .wc-block-price-filter__range-input-progress {
+    //             --range-color: #00a389;
+    //         }
+    //     }
+    //     .wc-block-formatted-money-amount {
+    //         background-color: get-gray-color("100");
+    //         width: auto;
+    //         max-width: none;
+    //         height: 50px;
+    //         text-align: center;
+    //         border: 1px solid;
+    //         border-color: get-gray-color("200") !important;
+    //         border-radius: 4px !important;
+    //         @include body-style;
+
+    //         &:focus {
+    //             border-color: get-brand-color(primary, "500");
+    //             outline: 1px solid get-brand-color(primary, "500");
+    //         }
+    //     }
+    // }
+
+    .wc-block-components-filter-reset-button {
+        @include body-style;
+    }
+}

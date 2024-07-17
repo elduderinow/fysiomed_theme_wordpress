@@ -1,0 +1,147 @@
+.global--search-bar--wrapper {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 20;
+
+    .global--search-bar {
+        position: absolute;
+        background-color: get-brand-color(primary, "500");
+        width: 100%;
+        z-index: 25;
+        transform: translateY(-150%);
+        transition: transform 0.2s ease-in-out;
+        pointer-events: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 2rem 1rem;
+
+        .wp-block-search__label {
+            display: none;
+        }
+
+        form.wp-block-search {
+            @include maxWidth;
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+
+            &:before {
+                position: absolute;
+                content: fa-content($fa-var-search);
+                font-family: "font awesome 5 pro";
+                font-size: 2.2rem;
+                color: white;
+            }
+
+            .wp-block-search__inside-wrapper {
+                width: 100% !important;
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+                margin-left: 4rem;
+            }
+
+            .icon {
+                flex-grow: 0;
+                color: get-gray-color("white");
+                font-size: 2rem;
+            }
+
+            input {
+                flex-grow: 1;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0);
+                border: none;
+                position: relative;
+                font-size: 3rem;
+                font-weight: 300;
+                color: get-gray-color("white");
+
+                &::placeholder {
+                    font-size: 3rem;
+                    color: get-gray-color("white");
+                    opacity: 0.5;
+                    font-weight: 300;
+                    position: absolute;
+                }
+
+                &:focus {
+                    outline: none;
+                    border: none;
+                }
+            }
+
+            button.wp-block-search__button {
+                position: relative;
+                background-color: white;
+                padding: 1.8rem;
+                color: get-brand-color(primary, "500");
+                transition: background-color 0.3s ease-in-out;
+                width: 25px;
+                height: 25px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50px;
+
+                &:after {
+                    position: absolute;
+                    content: fa-content($fa-var-chevron-right);
+                    font-family: "font awesome 5 pro";
+                    color: get-brand-color(primary, "500");
+                    font-size: 1.8rem;
+                    padding-left: 2px;
+                }
+
+                &:hover {
+                    background-color: get-gray-color("200");
+                }
+            }
+            // button {
+            //     flex-grow: 0;
+            //     background-color: get-gray-color("white");
+            //     width: 25px;
+            //     height: 25px;
+            //     display: flex;
+            //     align-items: center;
+            //     justify-content: center;
+            //     border-radius: 20px;
+
+            //     .icon {
+            //         color: get-brand-color(primary, "500");
+            //         font-size: 1.5rem;
+            //     }
+            // }
+        }
+    }
+    .search-bar--backdrop {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0);
+        width: 100%;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        pointer-events: none;
+        transition: background-color 0.2s ease-in-out;
+    }
+
+    &.show {
+        backdrop-filter: blur(5px);
+
+        .global--search-bar {
+            transform: translateY(0);
+            pointer-events: initial;
+        }
+
+        .search-bar--backdrop {
+            background-color: get-brand-color(primary, "900");
+            opacity: 0.8;
+            pointer-events: initial;
+        }
+    }
+}

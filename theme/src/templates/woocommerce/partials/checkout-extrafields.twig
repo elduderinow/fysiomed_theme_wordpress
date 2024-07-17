@@ -1,0 +1,12 @@
+{% for field_key, field in shipping_fields %}
+	{% if field_key not in ['shipping_address_1', 'shipping_address_2', 'shipping_address_3', 'shipping_city', 'shipping_postcode', 'shipping_country'] %}
+		<div class="shipping-field">
+			<label for="{{ field_key }}">{{ field.label }}</label>
+			{% if field.type == 'checkbox' %}
+				<input type="checkbox" name="{{ field_key }}" value="1" {% if field.value == '1' %} checked {% endif %}>
+			{% else %}
+				<input type="text" name="{{ field_key }}" value="{{ field.value }}">
+			{% endif %}
+		</div>
+	{% endif %}
+{% endfor %}

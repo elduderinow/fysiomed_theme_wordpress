@@ -1,0 +1,65 @@
+{
+    "key": "group_62cfc0225d5d1",
+    "title": "Partner info",
+    "fields": [
+        {
+            "key": "field_62cfc02e205cd",
+            "label": "Logo",
+            "name": "logo",
+            "type": "image",
+            "instructions": "Upload het logo (bv. svg)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_62cfc07d205ce",
+            "label": "Website",
+            "name": "website",
+            "type": "url",
+            "instructions": "Voeg de URL in van de website (incl. https:\/\/)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "https:\/\/www.website.be"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "company"
+            }
+        ]
+    ],
+    "menu_order": 2,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Partners, Company, Bedrijf",
+    "show_in_rest": 0,
+    "modified": 1658143792
+}

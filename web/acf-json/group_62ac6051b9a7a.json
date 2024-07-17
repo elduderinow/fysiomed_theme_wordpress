@@ -1,0 +1,777 @@
+{
+    "key": "group_62ac6051b9a7a",
+    "title": "Inhoud",
+    "fields": [
+        {
+            "key": "field_62ac605ba739e",
+            "label": "Paragrafen",
+            "name": "paragraphs",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Voeg hier verschillende types van paragrafen in om de inhoud weer te geven.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_62ac61d374d8b",
+            "min": 0,
+            "max": 0,
+            "layout": "block",
+            "button_label": "Nieuwe paragraaf",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_62ac61d374d8b",
+                    "label": "Type paragraaf",
+                    "name": "format",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "Kies het soort paragraaf dat je wil toevoegen. Afhankelijk van je keuze kan je vervolgens bepaalde velden invullen.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "text": "Tekst",
+                        "text-picture": "Tekst & Afbeelding",
+                        "text-video": "Tekst & Video",
+                        "picture": "Afbeelding",
+                        "gallery": "Galerij",
+                        "video": "Video",
+                        "sound": "Geluid",
+                        "file": "Bestand",
+                        "button": "Knop"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 1,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_62ac605ba739e"
+                },
+                {
+                    "key": "field_62ac651b792fd",
+                    "label": "Positie tekst",
+                    "name": "textPosition",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "Geef aan waar de tekst gepositioneerd moet worden t.o.v het andere element.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_62ac61d374d8b",
+                                "operator": "==",
+                                "value": "text-picture"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_62ac61d374d8b",
+                                "operator": "==",
+                                "value": "text-video"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "textLeft": "Tekst links",
+                        "textRight": "Tekst rechts"
+                    },
+                    "default_value": false,
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "return_format": "value",
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_62ac605ba739e"
+                },
+                {
+                    "key": "field_62b572afc9ecf",
+                    "label": "Tekst",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_62ac61d374d8b",
+                                "operator": "==",
+                                "value": "text"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_62ac61d374d8b",
+                                "operator": "==",
+                                "value": "text-text"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_62ac61d374d8b",
+                                "operator": "==",
+                                "value": "text-picture"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_62ac61d374d8b",
+                                "operator": "==",
+                                "value": "text-video"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
+                    "delay": 0,
+                    "parent_repeater": "field_62ac605ba739e"
+                },
+                {
+                    "key": "field_62ac64eba53e6",
+                    "label": "Tekst rechts",
+                    "name": "textRight",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_62ac61d374d8b",
+                                "operator": "==",
+                                "value": "text-text"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
+                    "delay": 0,
+                    "parent_repeater": "field_62ac605ba739e"
+                },
+                {
+                    "key": "field_62ac824d4aee2",
+                    "label": "Afbeelding",
+                    "name": "picture",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "Kies een afbeelding uit de mediabibliotheek",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_62ac61d374d8b",
+                                "operator": "==",
+                                "value": "text-picture"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_62ac61d374d8b",
+                                "operator": "==",
+                                "value": "picture"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "parent_repeater": "field_62ac605ba739e"
+                },
+                {
+                    "key": "field_62ba1472f66a7",
+                    "label": "Afbeelding formaat",
+                    "name": "pictureSize",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "Kies in welke grootte van de afbeelding getoond moet worden.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_62ac61d374d8b",
+                                "operator": "==",
+                                "value": "picture"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_62ac61d374d8b",
+                                "operator": "==",
+                                "value": "text-picture"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "small": "Klein",
+                        "medium": "Gemiddeld",
+                        "big": "Groot",
+                        "full_width": "Volledige breedte"
+                    },
+                    "default_value": false,
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "return_format": "value",
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_62ac605ba739e"
+                },
+                {
+                    "key": "field_62ac8306b565b",
+                    "label": "Videoplatform",
+                    "name": "videoPlatform",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "Geef aan hoe je de video wil embedden. Kies \"CMS website\" als je een video-bestand wil uploaden.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_62ac61d374d8b",
+                                "operator": "==",
+                                "value": "text-video"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_62ac61d374d8b",
+                                "operator": "==",
+                                "value": "video"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "youtube": "YouTube",
+                        "vimeo": "Vimeo",
+                        "url": "URL",
+                        "cms": "CMS website"
+                    },
+                    "default_value": false,
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "return_format": "value",
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_62ac605ba739e"
+                },
+                {
+                    "key": "field_62ac83b5b565d",
+                    "label": "Video",
+                    "name": "videoUrl",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "Plak de link naar de video in dit veld.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_62ac8306b565b",
+                                "operator": "==",
+                                "value": "youtube"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_62ac8306b565b",
+                                "operator": "==",
+                                "value": "vimeo"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_62ac8306b565b",
+                                "operator": "==",
+                                "value": "url"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "parent_repeater": "field_62ac605ba739e"
+                },
+                {
+                    "key": "field_62ac847961f5e",
+                    "label": "Video",
+                    "name": "videoFile",
+                    "aria-label": "",
+                    "type": "file",
+                    "instructions": "Kies een videobestand uit de mediagalerij.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_62ac8306b565b",
+                                "operator": "==",
+                                "value": "cms"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_size": "",
+                    "max_size": "",
+                    "mime_types": "mov,mp4,avi,mpeg,mpg",
+                    "parent_repeater": "field_62ac605ba739e"
+                },
+                {
+                    "key": "field_62ba1e405be05",
+                    "label": "Autoplay",
+                    "name": "videoAutoplay",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_62ac61d374d8b",
+                                "operator": "==",
+                                "value": "text-video"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_62ac61d374d8b",
+                                "operator": "==",
+                                "value": "video"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "Start deze video bij laden (enkel desktop)",
+                    "default_value": 0,
+                    "ui": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "parent_repeater": "field_62ac605ba739e"
+                },
+                {
+                    "key": "field_62ac8674c2d6c",
+                    "label": "Geluidplatform",
+                    "name": "soundPlatform",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "Geef aan hoe je het geluidsfragment wil embedden. Kies \"CMS website\" als je een geluidsbestand wil uploaden.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_62ac61d374d8b",
+                                "operator": "==",
+                                "value": "sound"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "soundcloud": "SoundCloud",
+                        "spotify": "Spotify",
+                        "deezer": "Deezer",
+                        "url": "URL",
+                        "cms": "CMS website"
+                    },
+                    "default_value": false,
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "return_format": "value",
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_62ac605ba739e"
+                },
+                {
+                    "key": "field_62ac87a740e4f",
+                    "label": "Geluid",
+                    "name": "soundUrl",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "Plak de link naar het geluidsfragment in dit veld.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_62ac8674c2d6c",
+                                "operator": "==",
+                                "value": "soundcloud"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_62ac8674c2d6c",
+                                "operator": "==",
+                                "value": "spotify"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_62ac8674c2d6c",
+                                "operator": "==",
+                                "value": "deezer"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_62ac8674c2d6c",
+                                "operator": "==",
+                                "value": "url"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "parent_repeater": "field_62ac605ba739e"
+                },
+                {
+                    "key": "field_62ac87dc40e53",
+                    "label": "Geluid",
+                    "name": "soundFile",
+                    "aria-label": "",
+                    "type": "file",
+                    "instructions": "Kies een geluidsbestand uit de mediagalerij.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_62ac8674c2d6c",
+                                "operator": "==",
+                                "value": "cms"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_size": "",
+                    "max_size": "",
+                    "mime_types": "mp3",
+                    "parent_repeater": "field_62ac605ba739e"
+                },
+                {
+                    "key": "field_62ac8b0be843b",
+                    "label": "Galerij",
+                    "name": "gallery",
+                    "aria-label": "",
+                    "type": "gallery",
+                    "instructions": "Kies 2 of meer afbeeldingen uit de mediagalerij",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_62ac61d374d8b",
+                                "operator": "==",
+                                "value": "gallery"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "insert": "append",
+                    "library": "all",
+                    "min": "",
+                    "max": "",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "parent_repeater": "field_62ac605ba739e"
+                },
+                {
+                    "key": "field_62ba2f6c2f682",
+                    "label": "Bestand label",
+                    "name": "fileLabel",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Geef het bestand een zinvol label om te tonen",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_62ac61d374d8b",
+                                "operator": "==",
+                                "value": "file"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "parent_repeater": "field_62ac605ba739e"
+                },
+                {
+                    "key": "field_62ba2fc02f683",
+                    "label": "Bestand",
+                    "name": "file",
+                    "aria-label": "",
+                    "type": "file",
+                    "instructions": "Kies een bestand uit de mediabibliotheek",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_62ac61d374d8b",
+                                "operator": "==",
+                                "value": "file"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_size": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "parent_repeater": "field_62ac605ba739e"
+                },
+                {
+                    "key": "field_62ba32e5aca1b",
+                    "label": "Link",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "Geef een link op om te koppelen aan de knop. De linktekst is het label op de knop.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_62ac61d374d8b",
+                                "operator": "==",
+                                "value": "button"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_62ac61d374d8b",
+                                "operator": "==",
+                                "value": "text-picture"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "parent_repeater": "field_62ac605ba739e"
+                },
+                {
+                    "key": "field_62ba358ed978e",
+                    "label": "Quote",
+                    "name": "quote",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Geef de quote in",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_62ac61d374d8b",
+                                "operator": "==",
+                                "value": "quote"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "parent_repeater": "field_62ac605ba739e"
+                },
+                {
+                    "key": "field_62ba35a9d978f",
+                    "label": "Auteur",
+                    "name": "quoteAuthor",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Van wie is deze quote?",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_62ac61d374d8b",
+                                "operator": "==",
+                                "value": "quote"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "parent_repeater": "field_62ac605ba739e"
+                },
+                {
+                    "key": "field_62ba35ccd9790",
+                    "label": "Bedrijf\/Medium\/Functie",
+                    "name": "quoteCompany",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "In welke context werd deze quote gedaan?",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_62ac61d374d8b",
+                                "operator": "==",
+                                "value": "quote"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "parent_repeater": "field_62ac605ba739e"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "front-page.php"
+            }
+        ]
+    ],
+    "menu_order": 1,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Paragrafen",
+    "show_in_rest": 0,
+    "modified": 1697116553
+}

@@ -1,0 +1,90 @@
+$types: primary, secondary;
+
+@mixin buttonBase {
+    @include p-text;
+    display: inline-block;
+    padding: 8px 16px;
+    text-align: center;
+    border-radius: 0;
+    font-weight: 500;
+
+    i {
+        font-family: "font awesome 5 pro";
+        font-style: normal;
+
+        &.fa-plus {
+            font-weight: 400;
+            padding-right: 1rem;
+        }
+    }
+
+    @each $type in $types {
+        &.button__#{$type} {
+            background-color: get-brand-color($type, "500");
+            transition: background-color 0.2s ease-in-out;
+
+            &:hover {
+                background-color: darken(get-brand-color($type, "500"), 10%);
+            }
+        }
+    }
+
+    &.button__tertiary {
+        background-color: get-gray-color("200");
+        transition: background-color 0.2s ease-in-out;
+
+        &:hover {
+            background-color: darken(get-gray-color("200"), 10%);
+        }
+    }
+}
+
+@mixin buttonArrow {
+    padding: 0;
+    position: relative;
+    margin: 1rem 0;
+    text-decoration: none;
+
+    &:after {
+        content: fa-content($fa-var-chevron-right);
+        font-family: "font awesome 5 pro";
+        font-weight: 900;
+        position: absolute;
+        right: -3rem;
+        font-size: 1.4rem;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: right 0.2s ease-in-out;
+    }
+    &:hover:after {
+        right: -4rem;
+    }
+}
+
+.button--main {
+    @include buttonBase;
+
+    &.button__primary {
+        color: get-gray-color("white");
+    }
+
+    // &.button__tertiary {
+    //     background-color: get-gray-color("200");
+    // }
+
+    &.button__arrow {
+       @include buttonArrow;
+    }
+
+    &.button__inline {
+        color: get-gray-color("500");
+        text-decoration: underline;
+        text-align: left;
+        padding: 0;
+
+        &:hover {
+            color: get-gray-color("700");
+            text-decoration: none;
+        }
+    }
+}

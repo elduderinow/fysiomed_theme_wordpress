@@ -1,0 +1,47 @@
+{
+    "key": "group_62d54a548db48",
+    "title": "Getuigenis info",
+    "fields": [
+        {
+            "key": "field_62d54a5c1e72f",
+            "label": "Auteur",
+            "name": "author",
+            "type": "post_object",
+            "instructions": "Kies een persoon uit de lijst.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "person"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "testimonial"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Testimonial, quote",
+    "show_in_rest": 0,
+    "modified": 1658146108
+}

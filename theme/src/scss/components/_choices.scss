@@ -1,0 +1,13 @@
+.choices {
+    margin-bottom: 0;
+    @include p-text;
+    
+
+    .choices__inner {
+        min-width: 230px;
+        @include inputFields;
+    }
+    .choices__list--dropdown .choices__item--selectable {
+        padding: 0.5rem;
+    }
+}

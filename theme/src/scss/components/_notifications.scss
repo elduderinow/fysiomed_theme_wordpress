@@ -1,0 +1,44 @@
+.woocommerce-notices-wrapper {
+    position: fixed;
+    z-index: 20;
+    width: 100%;
+    right: 0;
+    top: 5rem;
+
+    .woocommerce-message {
+        width: calc((100% / 12) * 4);
+        margin: 0 auto;
+        background-color: #e0f0ec;
+        border-radius: 5px;
+        border-top: none;
+        @include p-text;
+        color: #01705e;
+        text-align: center;
+
+        &:before {
+            color: #01705e;
+        }
+        box-shadow:
+            rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+            rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    }
+
+    @keyframes SlideOut {
+        from {
+            opacity: 1;
+            top: 5rem;
+        }
+        to {
+            opacity: 0.2;
+            top: -5rem;
+        }
+    }
+
+    &.remove {
+        animation-name: SlideOut;
+        animation-duration: 0.5s;
+        animation-delay: 4s;
+        animation-fill-mode: forwards;
+        pointer-events: none;
+    }
+}

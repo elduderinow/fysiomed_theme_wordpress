@@ -1,0 +1,13 @@
+form {
+    input {
+        background-color: get-gray-color("50");
+        border: 1px solid get-gray-color("200");
+        height: 50px;
+        padding: 0.5rem;
+
+        &:focus {
+            outline: none;
+            border: 1px solid get-brand-color(primary, "500");
+        }
+    }
+}

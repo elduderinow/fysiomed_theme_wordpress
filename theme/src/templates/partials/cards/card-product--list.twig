@@ -1,0 +1,9 @@
+<a href="{{url}}" class="card card-product--list flex w-full gap-4 items-center">
+	<div class="w-1/5 image">
+		{% include './partials/components/media--comp.twig' with {image:image, aspectRatio:'4/3'} %}
+	</div>
+	<div class="w-4/5 text">
+		<p class="ref-text">{{sku}}</p>
+		<h6 class="h6-text title">{{title}}</h6>
+	</div>
+</a>

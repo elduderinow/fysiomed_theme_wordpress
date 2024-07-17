@@ -1,0 +1,150 @@
+{
+    "key": "group_62bb5faba39c6",
+    "title": "Event info",
+    "fields": [
+        {
+            "key": "field_62bc41e9110ba",
+            "label": "Startdatum",
+            "name": "startdate",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d\/m\/Y",
+            "return_format": "d\/m\/Y",
+            "first_day": 1
+        },
+        {
+            "key": "field_62bc41ff110bb",
+            "label": "Einddatum",
+            "name": "enddate",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d\/m\/Y",
+            "return_format": "d\/m\/Y",
+            "first_day": 1
+        },
+        {
+            "key": "field_62bc420b110bc",
+            "label": "Startuur",
+            "name": "starttime",
+            "type": "time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "H:i:s",
+            "return_format": "H:i:s"
+        },
+        {
+            "key": "field_62bc4227110bd",
+            "label": "Einduur",
+            "name": "endtime",
+            "type": "time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "H:i:s",
+            "return_format": "H:i:s"
+        },
+        {
+            "key": "field_62bc4386f901b",
+            "label": "Link",
+            "name": "link",
+            "type": "link",
+            "instructions": "Link naar inschrijvingen of tickets",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_62bc4f9654231",
+            "label": "Locatie",
+            "name": "location",
+            "type": "post_object",
+            "instructions": "Kies een locatie uit de lijst",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "location"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
+            "key": "field_62bc4fb954232",
+            "label": "Contactpersoon",
+            "name": "contact",
+            "type": "post_object",
+            "instructions": "Kies een persoon uit de lijst",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "person"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "event"
+            }
+        ]
+    ],
+    "menu_order": 2,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Activiteit, evenement",
+    "show_in_rest": 0,
+    "modified": 1656970668
+}

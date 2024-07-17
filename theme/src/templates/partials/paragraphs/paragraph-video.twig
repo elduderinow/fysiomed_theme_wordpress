@@ -1,0 +1,9 @@
+{% if (video) %}
+	<div class="paragraph paragraph--video">
+		<div class="grid grid-cols-12">
+			<div class="image col-span-12">
+				{% include './partials/components/media--comp.twig' with {video:video, aspectRatio:'16/9'} %}
+			</div>
+		</div>
+	</div>
+{% endif %}

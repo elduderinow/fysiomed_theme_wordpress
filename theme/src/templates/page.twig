@@ -1,0 +1,46 @@
+{% extends "base.twig" %}
+{# {% block mainNav %}{% endblock %} #}
+{% block content %}
+	<div class="max-width">
+		<div class="hero">
+			<div class="hero--image">
+				{% include './partials/components/media--comp.twig' with {image:page.image, position:'top'} %}
+			</div>
+			<div class="hero--content">
+				{# <div class="col-span-12">
+					<div class="hero-nav-container">
+						{% include 'partials/general/main-nav.twig' %}
+					</div>
+				</div> #}
+				<div class="grid grid-cols-12">
+					<div class="text col-span-12 md:w-3/5 lg:w-2/5">
+						<div class="text--inner py-40">
+							<h1 class="h1-text mb-5">{{ page.title }}</h1>
+							<p class="p-text">{{ page.intro }}</p>
+							{% if page.buttons %}
+								<div class="hero--buttons pt-20">
+									{% for button in page.buttons %}
+										{% include './partials/components/button.twig' with {url:button.button_link.url, text:button.button_link.title, style: loop.index == 1 ? "secondary" : "primary"} %}
+									{% endfor %}
+								</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="bg--white page-content">
+		<div class="max-width px-6">
+			<div class="grid grid-cols-12">
+				<div class="col-span-12">
+					<div class="paragraphs space-y-40 mb-40">
+						{% for paragraph in page.paragraphs %}
+							{% include './partials/paragraphs/paragraphs.twig' %}
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

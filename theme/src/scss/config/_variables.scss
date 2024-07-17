@@ -1,0 +1,31 @@
+//GROUP ALL GLOBAL VARIABLES
+
+//FONT PATH
+$asset-path:                        '../';
+$image-url-path:                    $asset-path + 'images/';
+$font-url-path:                     $asset-path + 'fonts/';
+$iconfontpath:                      $asset-path + 'fonts/icomoon/';
+
+$text-color:                        get-gray-color('400');
+$heading-color:                     get-gray-color('200');
+
+$font-size-small:                   1.8rem !default; // 12px
+$font-size-base:                    2rem !default; // 16px
+$font-size-medium:                  2.2rem !default; // 24px
+$font-size-large:                   2.4rem !default; // 32px
+
+$font-size-h1:                      15rem !default; // 32px
+$font-size-h2:                      6rem !default; //24px
+$font-size-h3:                      4rem !default; //18px
+$font-size-h4:                      2.8rem !default;
+$font-size-h5:                      2rem !default;
+
+$font-weight-regular:               400 !default;
+$font-weight-bold:                  800 !default;
+
+$line-height-base:                  1.6 !default;
+$line-height-computed:              floor(($font-size-base * $line-height-base)) !default;
+
+$headings-line-height:              1.1 !default;
+
+$font-family-base:                  Arial, Helvetica, sans-serif;

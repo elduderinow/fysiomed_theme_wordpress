@@ -1,0 +1,17 @@
+{# {% set picSource = picture.sizes is iterable and picture.sizes|length > 0 ? picture.sizes.medium : (picture.sizes is iterable and picture.sizes|length <= 0 ? '' : picture) %} #}
+{% set picSource = '' %}
+
+{% if picture.sizes is iterable and picture.sizes|length > 0 %}
+	{% set picSource = picture.sizes.medium %}
+{% elseif picture.sizes is iterable and picture.sizes|length <= 0  %}
+	{% set picSource = '' %}
+{% else %}
+	{% set picSource = picture %}
+{% endif %}
+
+<picture>
+	{# <source media="(max-width:600px)" srcset="{{ picture.sizes.medium }}"> #}
+	<source media="(max-width:1199px)" srcset="{{ picture.sizes.large }}">
+	<source media="(min-width:1200px)" srcset="{{ picture.sizes.full_hd }}">
+	<img style="object-position:{{position}}" src="{{picSource}}" alt="{{ picture.alt }}"/>
+</picture>

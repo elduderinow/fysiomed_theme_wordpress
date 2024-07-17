@@ -1,0 +1,86 @@
+.accordion--comp {
+    .faq--wrapper {
+        @apply space-y-10;
+        padding: 3rem 0;
+        
+        .faq--list-item {
+            border: 1px solid get-gray-color("200");
+            padding: 1rem;
+           
+            h5 {
+                @include p-text;
+                font-weight: 700;
+                margin-bottom: 1rem;
+            }
+
+            .list-item--inner-container {
+                .list-item--inner {
+                    padding: 1rem;
+                    border-bottom: 1px solid get-gray-color("200");
+                    background-color: get-gray-color("white");
+                    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+
+                    .faq-title {
+                        display: inline-block;
+                        width: 100%;
+                        position: relative;
+                        padding: 1rem 0;
+                        cursor: pointer;
+                        @include p-text;
+                        font-size: 14px;
+                        font-weight: 700;
+
+                        &:after {
+                            content: fa-content($fa-var-chevron-down);
+                            font-family: "font awesome 5 pro";
+                            position: absolute;
+                            right: 0;
+                            font-size: 1.3rem;
+                            transform: rotate(0deg);
+                            transition: transform 0.2s ease-in-out;
+                            color: get-brand-color(primary, '500');
+                        }
+                    }
+
+                    .faq--body {
+                        display: grid;
+                        grid-template-rows: 0fr;
+                        transition: grid-template-rows 0.2s ease-in-out;
+                        overflow: hidden;
+
+                        .expandable {
+                            min-height: 0;
+                            @include p-text;
+                        }
+                    }
+
+                    &.open {
+                        background-color: get-gray-color("100");
+                        .faq-title {
+                            color: get-brand-color(primary, '500');
+                            &:after {
+                                transform: rotate(180deg);
+                            }
+                        }
+
+                        .faq--body {
+                            grid-template-rows: 1fr;
+                            overflow: hidden;
+                        }
+                    }
+
+                    &:last-child {
+                        border: none;
+                        padding-bottom: none;
+                    }
+
+                    &:hover {
+                        .faq-title {
+                            color: get-brand-color(primary, '500');
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

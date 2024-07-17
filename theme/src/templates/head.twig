@@ -1,0 +1,53 @@
+<title>
+    {{ metaData.title }} | {{ site.name }}
+</title>
+
+<!-- GENERAL META -->
+<meta charset="{{site.charset}}" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="msapplication-TileColor" content="#da532c" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="image" content="{{ metaData.imageUrl }}" />
+<meta name="author" content="{{ metaData.author }}" />
+
+{% if (metaData.yoastActive == false) %}
+    <meta name="description" content="{{ metaData.description }}" />
+    <meta name="keywords" content="{{ metaData.tags }}" />
+    <!-- OPENGRAPH / FACEBOOK -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="nl_BE" />
+    <meta property="og:url" content="{{ metaData.url }}" />
+    <meta property="og:title" content="{{ metaData.title }}" />
+    <meta property="og:description" content="{{ metaData.description }}" />
+    <meta property="og:image" content="{{ metaData.imageUrl }}" />
+    <meta property="fb:app_id" content="" />
+    <!-- TWITTER -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="{{ site.name }}" />
+    <meta name="twitter:site" content="{{ site.name }}" />
+    <meta name="twitter:title" content="{{ metaData.title }}" />
+    <meta name="twitter:description" content="{{ metaData.description }}" />
+    <meta name="twitter:image" content="{{ metaData.imageUrl }}" />
+{% endif %}
+
+<!-- LINKS / FAVICON / STYLESHEET / SCRIPTS -->
+<link rel="apple-touch-icon" sizes="180x180" href="{{site.theme.link}}/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="{{site.theme.link}}/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="{{site.theme.link}}/favicon-16x16.png">
+<link rel="preconnect" href="https://use.typekit.net/vad0yic.css" crossorigin>
+<link rel="stylesheet" href="{{site.theme.link}}/app.css" type="text/css" media="screen" />
+
+<!-- EXTRA TRACKING -->
+<!-- GTM => see Complianz -->
+{%  if (gtmActive == true) %}
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','{{ gtmKey }}');
+    </script>
+    <!-- End Google Tag Manager -->
+{% endif %}

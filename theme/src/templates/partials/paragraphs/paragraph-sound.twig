@@ -1,0 +1,21 @@
+{% if sound %}
+    <div class="paragraph paragraph--sound">
+        {% if (sound.platform == 'soundcloud') %}
+            <iframe class="soundcloud" src="https://w.soundcloud.com/player/?url={{ sound.url }}&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true" allowtransparency="true"></iframe>
+        {% endif %}
+        {% if (sound.platform == 'spotify') %}
+            <iframe class="spotify" src="{{ sound.url }}" webkitallowfullscreen mozallowfullscreen allowfullscreen allowtransparency="true"></iframe>
+        {% endif %}
+        {% if (sound.platform == 'deezer') %}
+            <iframe class="deezer" src="{{ sound.url }}" webkitallowfullscreen mozallowfullscreen allowfullscreen allowtransparency="true"></iframe>
+        {% endif %}
+        {% if (sound.platform == 'cms' or sound.platform == 'url') %}
+            <div class="audio-wrapper">
+                <audio class="audio-player" controls>
+                    <source src="{{ sound.url }}" type="audio/mp3">
+                    {{__('Uw browser kan dit geluid niet afspelen.')}}
+                </audio>
+            </div>
+        {% endif %}
+    </div>
+{% endif %}

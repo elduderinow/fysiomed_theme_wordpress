@@ -1,0 +1,9 @@
+{% if (picture) %}
+	<div class="paragraph paragraph--img">
+		<div class="grid grid-cols-12">
+			<div class="image col-span-12">
+				{% include './partials/components/media--comp.twig' with {image:picture, aspectRatio:'16/9', position:'top'} %}
+			</div>
+		</div>
+	</div>
+{% endif %}

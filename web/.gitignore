@@ -1,0 +1,5 @@
+/wp
+/vendor
+/wp-content
+.DS_Store
+.idea

@@ -1,0 +1,70 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+	<div class="woo--archive">
+		<div class="filters-wrapper filters">
+			<div class="archive-filters--main">
+				{{products_filter}}
+			</div>
+			<div class="archive-filters--backdrop"></div>
+		</div>
+		<div class="max-width px-6">
+			<div class="grid grid-cols-12">
+				<div class="col-span-12">
+					<div class="breadcrumbs pb-20 pt-5">
+						{% do action('woocommerce_before_main_content') %}
+					</div>
+				</div>
+			</div>
+			<div class="filters hidden lg:block lg:col-span-3">
+				<div class="before-shop-loop">
+					{{products_filter}}
+				</div>
+			</div>
+			<div class="col-span-12 lg:col-span-9 lg:pl-6 space-y-10 pb-40">
+				<h2 class="h2-text">{{ title }}</h2>
+				<div class="archive--sort flex flex-col space-y-4">
+					{% do action('woocommerce_before_shop_loop') %}
+				</div>
+				<div class="woo--archive-filter-button flex flex-row gap-x-4 lg:hidden">
+					<div class="button--filter flex-grow w-full">
+						{% include './partials/components/button.twig' with {url:'', text:'Filteren', style:'secondary', icon:'filter', type:'button'} %}
+					</div>
+					<div class="button--search">
+						{% include './partials/components/button.twig' with {url:'', text:'', style:'tertiary', icon:'search', type:'button'} %}
+					</div>
+				</div>
+				<div class="loop grid grid-cols-12 gap-5">
+					{% for product in products %}
+						<div class="col-span-12 sm:col-span-4 lg:col-span-4 xl:col-span-4">
+							{% include "./partials/cards/card-product.twig" with {product:product} %}
+						</div>
+					{% endfor %}
+				</div>
+
+				{% do action('woocommerce_after_shop_loop') %}
+
+				{% if current_user %}
+					<div class="col-span-12 md:col-span-12 xl:col-span-10">
+						<div class="archive-cta">
+							<h5 class="h5-text">{{__('Maak de beste keuze met persoonlijk advies op maat!')}}</h5>
+							<p>{{__('Als u persoonlijk advies nodig heeft bij uw aankoop, aarzel dan niet om hulp te vragen. Door advies te vragen kunt u geld en tijd besparen en een weloverwogen beslissing nemen.')}}</p>
+							<div class="flex gap-x-20 contact-wrapper">
+								<div class="">
+									<a class="p-text phone" href="tel:+3234576676">+32 3 4576676</a>
+									<p>Ma - Vrij: 9:00 - 12:30 & 13:30 - 17:00</p>
+								</div>
+								<div class="">
+									<a class="p-text email" href="mailto:info@fysiomed.com">info@fysiomed.com</a>
+									<p>{{__('Binnen 24 uur antwoord.')}}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endif %}
+
+				{% do action('woocommerce_after_main_content') %}
+			</div>
+		</div>
+	</div>
+{% endblock  %}

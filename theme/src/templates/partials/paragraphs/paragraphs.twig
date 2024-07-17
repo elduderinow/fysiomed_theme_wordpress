@@ -1,0 +1,36 @@
+{% if paragraph.format == 'text' %}
+	{% include './partials/paragraphs/paragraph-text.twig' with {'text': paragraph.text} %}
+{% elseif paragraph.format == 'text-picture' %}
+	{%  include './partials/paragraphs/paragraph-text-media.twig' with
+        {
+            image: paragraph.picture,
+            text: paragraph.text,
+            size:'',
+            textPosition: paragraph.textPosition,
+            textButton: paragraph.button
+        }
+    %}
+{% elseif paragraph.format == 'text-video' %}
+	{%  include './partials/paragraphs/paragraph-text-media.twig' with{
+            video: paragraph.video,
+            text: paragraph.text,
+            size:'',
+            textPosition: paragraph.textPosition,
+            textButton: paragraph.button
+        }
+    %}
+{% elseif paragraph.format == 'picture' %}
+	{% include './partials/paragraphs/paragraph-picture.twig' with {'picture': paragraph.picture} %}
+{% elseif paragraph.format == 'gallery' %}
+	{% include './partials/paragraphs/paragraph-gallery.twig' with {'gallery': paragraph.gallery} %}
+{% elseif paragraph.format == 'video' %}
+	{% include './partials/paragraphs/paragraph-video.twig' with {'video': paragraph.video} %}
+{% elseif paragraph.format == 'sound' %}
+	{% include './partials/paragraphs/paragraph-sound.twig' with {'sound': paragraph.sound} %}
+{% elseif paragraph.format == 'file' %}
+	{% include './partials/paragraphs/paragraph-file.twig' with {'file': paragraph.file} %}
+{% elseif paragraph.format == 'button' %}
+	{% include './partials/paragraphs/paragraph-button.twig' with {'link': paragraph.button} %}
+{% elseif paragraph.format == 'quote' %}
+	{% include './partials/paragraphs/paragraph-quote.twig' with {'quote': paragraph.quote} %}
+{% endif %}

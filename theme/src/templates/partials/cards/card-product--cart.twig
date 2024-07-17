@@ -1,0 +1,31 @@
+<div class="card card-product--cart flex w-full gap-4 items-center">
+	<div class="w-1/6 image">
+		{% include './partials/components/media--comp.twig' with {image:image, aspectRatio:'4/3'} %}
+	</div>
+	<div class="w-4/6 text">
+		<h6 class="h6-text title">{{title}}</h6>
+		<div class="quantity--counter">
+			<label class="screen-reader-text" for="quantity">{{title}}</label>
+			<div class="counter">
+				<span class="subtract">
+					<i class="fa-thin fa-minus"></i>
+				</span>
+				<input type="number" id="quantity" class="input-text qty text" name="cart[{{key}}][qty]" value="{{item.quantity}}" title="Qty" size="4" min="1" max="" step="1" placeholder="" inputmode="numeric" autocomplete="off"/>
+				<span class="add">
+					<i class="fa-thin fa-plus"></i>
+				</span>
+			</div>
+		</div>
+	</div>
+	<div class="w-1/6 price-summary">
+		<div class="line-total">
+			<h6 class="h6-text line-price">€{{ item.line_total }}<h6>
+					<p class="p-text tax">{{__('excl btw')}}</p>
+				</div>
+				<div class="product-remove">
+					<a href="{{permalink}}?remove_item={{key}}&_wpnonce={{nonce_value}}" class="remove" aria-label="Remove this item" data-product_id="{{product.get_id()}}" data-product_sku="{{product.get_sku()}}">
+						<i class="fas fa-trash"></i>
+					</a>
+				</div>
+			</div>
+		</div>

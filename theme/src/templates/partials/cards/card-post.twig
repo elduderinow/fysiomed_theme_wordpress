@@ -1,0 +1,50 @@
+{# todo:remove card, not in use #}
+<article class="card card-product h-full">
+	{# {{ fn('timber_set_product', product) }} #}
+	{# {{dump(post)}} #}
+		<div class="media h-full"> <div class="media-content flex flex-col h-full justify-between">
+			<div class="flex justify-end p-3">
+				<div class="heart--icon"></div>
+			</div>
+			<a href="{{post.guid}}">
+				<div class="product__image">
+					{# {{post.featured_image}} #}
+					{% include './partials/components/media--comp.twig' with {image:post.featured_image,aspectRatio:'16/9'} %}
+					{# {% do action('woocommerce_before_shop_loop_item_title') %} #}
+				</div>
+				<div
+					class="product__info flex flex-col flex-wrap space-y-2 p-6">
+					{# <p class="ref-text">{{product._sku}}</p> #}
+					<p class="p-text">Innovation</p>
+					<h6 class="h6-text title">
+						{{ post.post_title }}
+
+					</h6>
+
+					<div class="flex justify-between pt-4">
+						<p class="p-text">3 kleuren</p>
+					</div>
+				</div>
+			</a>
+			<div class="product__buy flex justify-between items-center">
+				<div
+					class="price">{# {% do action( 'woocommerce_after_shop_loop_item_title') %} #}
+				</div>
+				{% if product.has_variants == true %}
+					<a href="{{product.link}}" class="button--main button__secondary" type="submit" name="add-to-cart" value="{{product.id}}" class="single_add_to_cart_button button alt wp-element-button">
+						selecteer opties
+					</a>
+				{% else %}
+					<form class="cart" action="{{product.link}}" method="post" enctype="multipart/form-data">
+						<div class="order-buttons">
+							<button class="button--main button__secondary" type="submit" name="add-to-cart" value="{{product.id}}" class="single_add_to_cart_button button alt wp-element-button">
+								<i class="fa-regular fa-plus"></i>
+								<i class="fas fa-truck"></i>
+							</button>
+						</div>
+					</form>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</article>

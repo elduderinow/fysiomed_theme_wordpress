@@ -1,0 +1,75 @@
+{% extends "base.twig" %}
+{# laten staan, lege mainnav block overide de base block met niets wat hier de bedoeling is. #}
+{% block mainNav %}{% endblock %}
+{% block content %}
+	<div class="max-width">
+		<div class="hero gsap-slide">
+			<div class="hero--image">
+				{% include './partials/components/media--comp.twig' with {image:homepage.image, position:'top'} %}
+			</div>
+			<div class="hero--content">
+				<div class="col-span-12">
+					<div class="hero-nav-container">
+						{% include 'partials/general/main-nav.twig' %}
+					</div>
+				</div>
+				<div class="grid grid-cols-12">
+					<div class="text slide--item col-span-12 md:w-3/5 lg:w-2/5">
+						<div class="text--inner py-40">
+							<h1 class="h1-text mb-5">{{ homepage.title }}</h1>
+							<p class="p-text">{{ homepage.intro }}</p>
+							{% if homepage.buttons %}
+								<div class="hero--buttons pt-20">
+									{% for button in homepage.buttons %}
+										{% include './partials/components/button.twig' with {url:button.button_link.url, text:button.button_link.title, style: loop.index == 1 ? 'secondary' : 'primary'} %}
+									{% endfor %}
+								</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% include './partials/paragraphs/paragraph-gallery.twig' with {categories:homepage.featuredCategories} %}
+
+	{% if homepage.paragraphs %}
+		<div class="paragraphs max-width px-6 space-y-40">
+			{% for paragraph in homepage.paragraphs %}
+				{% include './partials/paragraphs/paragraphs.twig' %}
+			{% endfor %}
+		</div>
+	{% endif %}
+
+	<div class="newproduct--comp frontpage gsap-slide">
+		<div class="max-width px-6 py-40">
+			<div class="grid grid-cols-12 gap-6">
+				<div class="col-span-12">
+					<h3 class="h3-text mb-10 slide--item">{{__('Nieuwe producten')}}</h3>
+				</div>
+				{% for article in newProducts.items %}
+					<div class="col-span-12 md:col-span-6 slide--item">
+						<div class="product--card space-y-10">
+							{% include './partials/cards/card-product--article.twig' with {
+								card:article,
+								button:{url:article.linkedProduct.permalink, text:'Shop nu', style:'secondary'},
+								readMore:{text:'Lees meer', style:'tertiary'}} %}
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	<div class="spotlight--comp max-width px-6 pb-40 gsap-slide">
+		<div class="grid grid-cols-12 gap-6">
+			<div class="col-span-12">
+				<h3 class="slide--item">{{__('Producten in de kijker')}}</h3>
+			</div>
+			{% for product in featuredProducts.items %}
+				<div class="col-span-12 md:col-span-3 shadow-lg">
+					{% include "./partials/cards/card-product.twig" %}
+				</div>
+			{% endfor %}
+		</div>
+	{% endblock %}

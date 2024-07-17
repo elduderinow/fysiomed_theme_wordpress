@@ -1,0 +1,35 @@
+.page--wp-login {
+    .form-wrapper {
+        max-width: 300px;
+        margin: 0 auto;
+        @include p-text;
+
+        .emailconfirm {
+            background-color: get-brand-color(primary, "500");
+            padding: 1rem;
+            margin-bottom: 2rem;
+            color: white;
+        }
+
+        .wp-login-form {
+            @apply space-y-10;
+            .login-item {
+                display: flex;
+                flex-direction: column;
+
+                input {
+                    width: 100%;
+                }
+            }
+        }
+
+        .login-link {
+            display: inline-block;
+            margin-top: 2rem;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

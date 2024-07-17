@@ -1,0 +1,139 @@
+<div class="main-nav web">
+	<div class="main-nav__header">
+		<a href="/">
+			<p class="h4-text title">fysiomed</p>
+		</a>
+		<a class="mobile--toggle"></a>
+	</div>
+	<div class="right--side gap-4 flex">
+		{% if main_menu.items %}
+			<div class="main-nav__link hidden lg:flex">
+				<ul class="main-nav-ul">
+					{% for item in main_menu.items %}
+						<li class="{% if item.current %}active{% endif %} main-nav--item {{item.children ? 'has-children'}}">
+							{% if item.children %}
+								<div class="main-nav__link-wrapper">
+									<p href="{{ item.link }}" class="main-nav__link">{{ item.title }}</p>
+									<i class="icon fa-solid fa-chevron-down"></i>
+								</div>
+								<ul class="main-nav__sub">
+									{% for child in item.children %}
+										<li class="child--item lvl2">
+											<a title="{{ child.title }}" target="{{ child.target }}" href="{{ child.link }}" class="main-nav__link lvl2">{{ child.title }}</a>
+											{% if child.children %}
+												<ul>
+													{% for childLvl3 in  child.children %}
+														<li class="child--item lvl3">
+															<a class="main-nav__link lvl3" target="{{ childLvl3.target }}" href="{{ childLvl3.link }}">{{ childLvl3.title }}</a>
+														</li>
+													{% endfor %}
+												</ul>
+											{% endif %}
+										</li>
+									{% endfor %}
+									<a class="button--main button__arrow btn_all-prod" href="{{ item.link }}">{{__('Alle producten')}}</a>
+								</ul>
+							{% else %}
+								<a title="{{ item.name}}" target="{{ item.target }}" href="{{ item.link }}" class="main-nav__link {{ item.children ? '--sub' : '' }}">{{ item.title }}</a>
+							{% endif %}
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		{% endif %}
+		<div class="main-nav__icons gap-x-16 lg:gap-x-8">
+			<div class="search__icon hidden lg:block">
+				<i class="icon far fa-search"></i>
+			</div>
+			{% if current_user and 	export_customer not in current_user.roles|keys|keys %}
+				<div class="cart__icon pr-5">
+					{% set url = wc_get_cart_url() %}
+					{% set count = wc_get_cart_count() %}
+					<a href="{{ url }}">
+						<span class="p-text cart--items">{{ count }}</span>
+						<i class="icon fas fa-truck relative"></i>
+					</a>
+				</div>
+			{% endif %}
+			<div class="hamburger__icon flex lg:hidden gap-x-4 items-center">
+				<span class="p-text">{{__('Menu')}}</span>
+				<i class="icon--inner fas fa-solid fa-bars"></i>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="main-nav mobile">
+	<div class="main-nav-mobile--search-bar">
+		<div class="search--bar">
+			<div class="search-bar--inner">
+				<i class="icon far fa-search"></i>
+				{{global_search}}
+			</div>
+		</div>
+	</div>
+	{% if main_menu.items %}
+		<div class="main-nav--wrapper">
+			<ul class="list-wrapper lvl1">
+				{% for item in main_menu.items %}
+					{% if item.children %}
+						<li class="list--item lvl1 {{item.children ? 'has-children'}}">
+							<h3 class="nav-link--inner {{item.children ? 'has-dropdown'}}">{{item.title}}</h3>
+							<div class="row-wrapper lvl1">
+								<ul class="list-wrapper expandable lvl2">
+									{% for child in item.children %}
+										{% if child.children %}
+											<li class="list--item lvl2 {{child.children ? 'has-children'}}">
+												<h3 class="nav-link--inner {{child.children ? 'has-dropdown'}}">{{child.title}}</h3>
+												<div class="row-wrapper lvl2">
+													<ul class="list-wrapper expandable lvl3">
+														{% for childLvl3 in child.children %}
+															<li class="list--item lvl3 {{childLvl3.children ? 'has-children'}}">
+																<a title="{{ childLvl3.name}}" target="{{ childLvl3.target }}" href="{{ childLvl3.link }}" class="nav-link--inner">{{ childLvl3.title }}</a>
+															</li>
+														{% endfor %}
+													</ul>
+												</div>
+											</li>
+										{% else %}
+											<li class="list--item lvl2">
+												<a title="{{ child.name}}" target="{{ child.target }}" href="{{ child.link }}" class="nav-link--inner">{{ child.title }}</a>
+											</li>
+										{% endif %}
+									{% endfor %}
+								</ul>
+							</div>
+						</li>
+					{% else %}
+						<li class="list--item lvl1">
+							<a title="{{ item.name}}" target="{{ item.target }}" href="{{ item.link }}" class="nav-link--inner">{{ item.title }}</a>
+						</li>
+					{% endif %}
+				{% endfor %}
+				<li class="list--item lvl1 favourite">
+					<a title="Favorieten" target="_self" href="/" class="nav-link--inner">
+						<i class="fas fa-heart"></i>{{__('Favorieten')}}</a>
+				</li>
+				<li class="list--item lvl1 myaccount">
+					<a title="Favorieten" target="_self" href="/my-account" class="nav-link--inner">
+						<i class="fas fa-user"></i>{{__('Mijn account')}}</a>
+				</li>
+				<li class="list--item lvl1 has-children">
+					<h3 class="nav-link--inner has-dropdown">NL</h3>
+					<div class="row-wrapper lvl1">
+						<ul class="list-wrapper expandable lvl2">
+							<li class="list--item lvl2">
+								<a title="NL" target="" href="" class="nav-link--inner">NL</a>
+							</li>
+							<li class="list--item lvl2">
+								<a title="FR" target="" href="" class="nav-link--inner">FR</a>
+							</li>
+							<li class="list--item lvl2">
+								<a title="FR" target="" href="" class="nav-link--inner">EN</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+	{% endif %}
+</div>

@@ -1,0 +1,50 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<div class="bg--white page-single">
+		<div class="max-width px-6">
+			<div class="grid grid-cols-12 space-y-28 py-32">
+				<div class="col-span-12 md:col-span-10 md:col-start-2 lg:col-span-6 lg:col-start-4">
+					<section class="article--title richtext">
+						<p>{{date_created|date("m/d/Y")}}</p>
+						<h1>{{ article.title }}</h1>
+
+						{% if article.subtitle %}
+							<h2>{{ article.subtitle }}</h2>
+						{% endif %}
+					</section>
+
+				</div>
+				<div class="col-span-12 lg:col-span-8 lg:col-start-3">
+					<section class="article--image">
+						{% if (article.image) %}
+							{% include './partials/components/media--comp.twig' with {image:article.image,aspectRatio:'16/9', position:'top'} %}
+						{% endif %}
+					</section>
+				</div>
+				<div class="col-span-12 md:col-span-10 md:col-start-2 lg:col-span-6 lg:col-start-4">
+					<section class="article--intro richtext">
+						{{ article.intro }}
+					</section>
+					{% if article.linkedProduct %}
+						<div class="linked--product mt-10">
+							{% include './partials/components/button.twig' with {url:article.linkedProduct.permalink, text:'Shop nu', style:'secondary'} %}
+						</div>
+					{% endif %}
+				</div>
+				<div class="col-span-12 md:col-span-10 md:col-start-2 lg:col-span-6 lg:col-start-4">
+					<div class="paragraphs space-y-12">
+						{% if article.paragraphs %}
+							{% for paragraph in article.paragraphs %}
+								{% include './partials/paragraphs/paragraphs.twig' %}
+							{% endfor %}
+						{% endif %}
+					</div>
+				</div>
+				<div class="col-span-12 md:col-span-10 md:col-start-2 lg:col-span-6 lg:col-start-4">
+					{% include './partials/components/link.twig' with {classnames:'single-page--link',link:{url: '/' ~ article.category.slug, target:'_self', title:'Terug naar overzicht'}} %}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

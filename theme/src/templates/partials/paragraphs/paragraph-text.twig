@@ -1,0 +1,16 @@
+{% if text or textRight %}
+	<div class="paragraph paragraph--text">
+		<div class="flex flex-wrap lg:flex-nowrap gap-x-40 gap-y-20">
+			{% if text  %}
+				<div class="cols richtext space-y-6">
+					{{ text }}
+				</div>
+			{% endif %}
+			{% if textRight  %}
+				<div class="cols richtext space-y-6">
+					{{ textRight }}
+				</div>
+			{% endif %}
+		</div>
+	</div>
+{% endif %}

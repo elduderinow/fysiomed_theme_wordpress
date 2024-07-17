@@ -1,0 +1,29 @@
+<div style="{% if aspectRatio %} aspect-ratio:{{aspectRatio}} {% else %} aspect-ratio:5/4 {% endif %}" class="media--comp">
+	{% if image %}
+		<div class="image-wrapper">
+			{% include "./partials/components/picture.twig" with {picture:image, position:position} %}
+		</div>
+	{% endif %}
+	{% if video %}
+		<div class="video-wrapper">
+			{% if placeholder %}
+				<div class="play-button">
+					<i class="fas fa-play"></i>
+				</div>
+				<img src="{{placeholder}}">
+			{% endif %}
+			{% if (video.platform == 'youtube') %}
+				<iframe width="100%" height="100%" src="{{ video.url }}{% if (video.autoplay == true) %}?&autoplay=1{% endif %}" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+			{% endif %}
+			{% if (video.platform == 'vimeo') %}
+				<iframe width="100%" height="100%" src="{{ video.url }}{% if (video.autoplay == true) %}?&autoplay=1{% endif %}" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+			{% endif %}
+			{% if (video.platform == 'cms' or video.platform == 'url') %}
+				<video class="video-player" controls {% if video.autoplay == true %} autoplay {% endif %}>
+					<source src="{{ video.url }}" type="video/mp4">
+					{{__('Uw browser kan deze video niet afspelen.')}}
+				</video>
+			{% endif %}
+		</div>
+	{% endif %}
+</div>

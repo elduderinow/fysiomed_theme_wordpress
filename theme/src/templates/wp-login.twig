@@ -1,0 +1,45 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<div class="bg--white page-single page--wp-login">
+		<div class="max-width px-6">
+			<div class="grid grid-cols-12 space-y-28 py-32">
+				<div class="col-span-12 md:col-span-10 md:col-start-2 lg:col-span-6 lg:col-start-4">
+					<div class="form-wrapper">
+						{% if query.name == 'action' and query.value == 'lostpassword' %}
+							{# wp password reset #}
+							<form class="wp-login-form" name="loginform" id="loginform" action="/wp/wp-login.php?action=lostpassword" method="post">
+								<div class="login-item">
+									<label for="user_login">{{__('Gebruikersnaam of e-mailadres')}}</label>
+									<input type="text" name="user_login" id="user_login" class="input" value="" size="20" autocapitalize="off" autocomplete="username" required="required">
+								</div>
+								<input type="submit" name="wp-submit" id="wp-submit" class="button--main button__primary" value="Nieuw wachtwoord aanmaken"/>
+							</form>
+							<a class="login-link" href="/wp-login">{{__('Aanmelden')}}</a>
+						{% else %}
+							{% if query.name == 'checkemail' and query.value == 'confirm' %}
+								{# wp checkemail confirm #}
+								<div class="emailconfirm">{{__('Controleer je e-mail voor de bevestigingslink en meld je vervolgens aan op deze pagina.')}}</div>
+
+							{% endif %}
+
+							{# wp login #}
+							<form class="wp-login-form" name="loginform" id="loginform" action="/wp/wp-login.php" method="post">
+								<div class="login-item">
+									<label for="user_login">{{__('Gebruikersnaam')}}</label>
+									<input type="text" name="log" id="user_login" class="input" value="" size="20"/>
+								</div>
+								<div class="login-item">
+									<label for="user_pass">{{__('Wachtwoord')}}</label>
+									<input type="password" name="pwd" id="user_pass" class="input" value="" size="20"/>
+								</div>
+								<input type="submit" name="wp-submit" id="wp-submit" class="button--main button__primary" value="Inloggen"/>
+							</form>
+							<a class="login-link" href="/wp-login?action=lostpassword">{{__('Wachtwoord vergeten?')}}</a>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

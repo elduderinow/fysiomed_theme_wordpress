@@ -1,0 +1,196 @@
+.woo--archive {
+    .filters-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 50;
+        display: flex;
+        justify-content: flex-end;
+        opacity: 0;
+        pointer-events: none;
+        backdrop-filter: blur(4px);
+
+        .archive-filters--main {
+            position: relative;
+            background-color: get-gray-color("200");
+            width: 80%;
+            height: 100%;
+            z-index: 5;
+            transform: translateX(100%);
+            transition: transform 0.2s ease-in-out;
+            padding: 4rem;
+        }
+        .archive-filters--backdrop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: get-brand-color(primary, "900");
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+            @apply backdrop-blur-3xl;
+        }
+
+        &.show {
+            opacity: 1;
+            pointer-events: initial;
+
+            .archive-filters--main {
+                transform: translateX(0);
+                transition: transform 0.2s ease-in-out;
+            }
+
+            .archive-filters--backdrop {
+                opacity: 0.8;
+                transition: transform 0.2s ease-in-out;
+            }
+        }
+    }
+    .before-shop-loop {
+        border-right: 1px solid rgb(227, 227, 227);
+        padding-right: 2rem;
+
+        .sidebar {
+            @apply space-y-10;
+            ul {
+                li {
+                    @include p-text;
+                }
+            }
+        }
+    }
+
+    .woo--archive-filter-button {
+        .button--filter {
+            .button--main {
+                width: 100%;
+            }
+        }
+    }
+
+    .archive-cta {
+        background-color: get-gray-color("100");
+        padding: 2.4rem;
+
+        .contact-wrapper {
+            // background-color: get-gray-color("200");
+            color: get-gray-color("900");
+            margin-top: 2rem;
+            .phone,
+            .email {
+                padding-left: 3rem;
+                position: relative;
+                font-weight: 700;
+                color: get-brand-color(primary, "500");
+
+                &:after {
+                    content: "";
+                    font-family: "font awesome 5 pro";
+                    font-weight: 900;
+                    font-size: 16px;
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    color: get-brand-color(primary, "500");
+                }
+            }
+
+            .phone:after {
+                content: fa-content($fa-var-phone);
+            }
+
+            .email:after {
+                content: fa-content($fa-var-envelope);
+            }
+        }
+    }
+
+    .woocommerce-pagination {
+        .page-numbers {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+
+            li {
+                .page-numbers {
+                    width: 50px;
+                    height: 50px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 5px;
+                    border: 1px solid rgba(0, 0, 0, 0);
+
+                    @include p-text;
+
+                    &.current {
+                        background-color: get-gray-color("100");
+                        border: 1px solid get-gray-color("200");
+                        pointer-events: none;
+                    }
+
+                    &:hover {
+                        color: get-brand-color(primary, "500");
+                    }
+
+                    &.next,
+                    &.prev {
+                        position: relative;
+
+                        span {
+                            position: relative;
+                            padding-left: 2rem;
+                            &:after {
+                                position: absolute;
+                                content: fa-content($fa-var-chevron-left);
+                                font-family: "font awesome 5 pro";
+                                left: 0;
+                                top: 1px;
+                                font-size: 1.1rem;
+                                font-weight: 600;
+                            }
+                        }
+                    }
+
+                    &.next {
+                        span {
+                            padding-left: 0;
+                            padding-right: 2rem;
+                            &:after {
+                                content: fa-content($fa-var-chevron-right);
+                                left: auto;
+                                right: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .archive--sort {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0;
+
+        @media (min-width: $breakpoint--sm) {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .woocommerce-notices-wrapper {
+            display: none;
+        }
+
+        .woocommerce-result-count {
+            display: flex;
+            align-items: center;
+        }
+    }
+}

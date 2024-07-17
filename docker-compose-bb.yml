@@ -1,0 +1,7 @@
+version: '3'
+services:    
+    php:
+        build: .docker/php
+        container_name: ${PROJECT_NAME}
+        volumes:
+          - $BITBUCKET_CLONE_DIR/web:/var/www/web:delegated

@@ -1,0 +1,123 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<div class="woo--single-product max-width px-6">
+		<div class="breadcrumbs pb-20 pt-5">
+			{% do action('woocommerce_before_main_content') %}
+		</div>
+		{# {% do action('woocommerce_before_single_product') %} #}
+		<div
+			class="product-container">
+			{# {% do action('woocommerce_before_single_product_summary') %} #}
+			<div class="item prod-media space-y-4 col-1">
+				<div class="swiper-container gallery">
+					<div class="swiper-wrapper">
+						{% for image in product.gallery %}
+							<div class="swiper-slide">
+								<div class="slider-wrapper">
+									{% include './partials/components/media--comp.twig' with {image:image,aspectRatio:'4/3'} %}
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="swiper-container gallery-thumbs">
+					<div class="swiper-wrapper">
+						{% for image in product.gallery %}
+							<div class="swiper-slide">
+								<div class="slider-wrapper">
+									{% include './partials/components/media--comp.twig' with {image:image,aspectRatio:'4/3',} %}
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+			<div class="item prod-specifications richtext col-1">
+				<h6 class="h6-text mb-4">{{__('Kenmerken')}}</h6>
+				{{ product.intro }}
+			</div>
+
+			{% if product.downloads is not empty %}
+				<div class="item prod-downloads richtext col-1">
+					<h6 class="h6-text mb-4">{{__('Downloads')}}</h6>
+					<ul class="download--list">
+						{% for download in product.downloads %}
+							<li class="dl--item">
+								<span class="file-icon">
+									<i class="far fa-file-alt"></i>
+								</span>
+								<a class="dl-url" downloadhref="{{download.file}}">{{download.name}}</a>
+								<span class="file-type"></span>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			{% endif %}
+			<div class="item prod-main-info col-2 pb-4">
+				<p class="ref-text">{{product.wcProduct.get_sku()}}</p>
+				<p class="p-text">
+					{% for tag in product.productTags %}
+						{{ tag.name }}
+						{% if (not loop.last) %}
+							<span>&nbsp;|&nbsp;</span>
+						{% endif %}
+					{% endfor %}
+				</p>
+				<h3>{{ product.wcProduct.get_title() }}</h3>
+			</div>
+			<div class="item prod-detail col-2">
+				<p class="p-text">{{ product.excerpt }}</p>
+			</div>
+
+			<div class="item prod-buy col-2 space-y-6">
+				{% if current_user %}
+					{{ function('woocommerce_template_single_price') }}
+					{% if export_customer not in current_user.roles|keys|keys %}
+						{{ function('woocommerce_template_single_add_to_cart') }}
+					{% endif %}
+				{% endif %}
+			</div>
+
+			{% if current_user is not defined %}
+				<div class="item prod-login-card col-2">
+					<h6 class="h-6-text mb-4">{{ __('Log in of meld je aan om prijzen te zien', 'fysiomed') }}</h6>
+					<p class="p-text">{{ __('Dit is nodig omdat wij onze prijzen enkel beschikbaar stellen voor onze geregistreerde klanten. Zo kunnen wij u ook een gepersonaliseerde ervaring bieden en u beter van dienst zijn.', 'fysiomed')  }}</p>
+					<div class="login--buttons pt-5">
+						{% include './partials/components/button.twig' with {url:'/my-account', text:'Inloggen', style:'secondary'} %}
+						{% include './partials/components/button.twig' with {url:'/registreer-account', text:'Account aanmaken', style:'primary'} %}
+					</div>
+				</div>
+			{% endif %}
+
+			{% if product.get_cross_sell_ids() %}
+				<div class="item prod-extras col-2 p-5">
+					<h6 class="h6-text mb-4">{{__('Standaard toebehoren')}}</h6>
+					<ul class="products space-y-6">
+						{% for cross_sell_id in product.get_cross_sell_ids() %}
+							{% set cross_sell_product = wc_get_product(cross_sell_id) %}
+							{% include './partials/cards/card-product--list.twig' with {image:cross_sell_product.get_image(), title:cross_sell_product.get_title(), sku:cross_sell_product.get_sku(), url:cross_sell_product.get_permalink()} %}
+						{% endfor %}
+					</ul>
+				</div>
+			{% endif %}
+		</div>
+
+		{% if related_products %}
+			<div class="spotlight--comp max-width px-6 pb-40">
+				<div class="grid grid-cols-12 gap-6">
+					<div class="col-span-12">
+						<h4 class="h4-text">{{__('Gerelateerde producten')}}</h4>
+					</div>
+					{# todo:hier is nog een woo php error op sales flash loop #}
+					{% for product in related_products %}
+						<div class="col-span-12 md:col-span-3 shadow-lg">
+							{% include "./partials/cards/card-product.twig" with {product: product} %}
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		{% endif %}
+		{% do action('woocommerce_after_single_product') %}
+	</div>
+{% endblock  %}

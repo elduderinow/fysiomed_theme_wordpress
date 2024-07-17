@@ -1,0 +1,50 @@
+<footer class="pt-20 pb-10">
+	<div class="inner-nav max-w-[1440px] mx-auto px-8">
+		<div class="grid grid-cols-12 space-y-14 lg:space-y-0 gap-8">
+			<div class="col-span-12 md:col-span-12 lg:col-span-3">
+				<div class="image-wrapper fysio-logo">
+					<img src="{{site.theme.link}}/images/fysio_logo.svg" alt="logo biologisch">
+				</div>
+			</div>
+			<div class="col-span-12 md:col-span-4 lg:col-span-3">
+				<h6 class="title">{{ site.name }}</h6>
+				{% if footer_menu %}
+					<div class="flex flex-col pt-4">
+						{% for item in footer_menu.items %}
+							<a href="{{ item.link }}">{{ item.title }}</a>
+						{% endfor %}
+					</div>
+				{% endif %}
+			</div>
+			<div class="col-span-12 md:col-span-4 lg:col-span-3">
+				{% if customer_menu %}
+					<h6 class="title">{{__('Klantenservice')}}</h6>
+					<div class="flex flex-col pt-4">
+						{% for item in customer_menu.items %}
+							<a href="{{ item.link }}">{{ item.title }}</a>
+						{% endfor %}
+					</div>
+				{% endif %}
+			</div>
+			<div class="col-span-12 md:col-span-4 lg:col-span-3">
+				<h6 class="title">{{__('Contactgegevens')}}</h6>
+				<div class="flex flex-col pt-4 space-y-6">
+					<p class="address">Doornstraat 87/89<br>
+						2650 Edegem - België</p>
+					<a class="phone" href="tel:+3234576676">+32 3 4576676</a>
+					<a class="email" href="mailto:info@fysiomed.com">info@fysiomed.com</a>
+				</div>
+			</div>
+			<div class="col-span-12 pt-20">
+				<div class="flex flex-col space-x-0 md:block md:space-x-10">
+					{% if gdpr_menu %}
+						{% for item in gdpr_menu.items %}
+							<a href="{{ item.link }}">{{ item.title }}</a>
+						{% endfor %}
+					{% endif %}
+					<a href="" class="js-scroll-top scroll-trigger">{{__('scrollen naar boven')}}</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>

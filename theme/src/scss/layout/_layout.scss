@@ -1,0 +1,12 @@
+//import file voor layout styling
+// pages, sections,...
+// @import 'flex';
+
+@mixin maxWidth {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.max-width {
+    @include maxWidth;
+}

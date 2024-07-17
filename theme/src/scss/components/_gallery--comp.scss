@@ -1,0 +1,73 @@
+@import "../../../node_modules/swiper/swiper";
+@import "../../../node_modules/swiper/components/pagination/pagination";
+@import "../../../node_modules/swiper/components/navigation/navigation";
+
+.slider__content {
+    width: 100%;
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        margin-top: -51px;
+        &:after {
+            content: "";
+        }
+
+        .button--inner {
+            position: relative;
+            background-color: pink;
+            display: flex;
+
+            &:after {
+                position: absolute;
+                content: fa-content($fa-var-chevron-right);
+                font-family: "font awesome 5 pro";
+                color: get-brand-color(primary, "500");
+                font-weight: 900;
+                width: 30px;
+                height: 30px;
+                background-color: white;
+                border: 0.5px solid get-brand-color(primary, "500");
+                border-radius: 100px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transform: translate(1px, 1px);
+                line-height: 1px;
+                letter-spacing: -1px;
+                padding: 0 10px;
+                transition:
+                    color 0.2s ease-in-out,
+                    background-color 0.2s ease-in-out;
+            }
+        }
+
+        &:hover {
+            .button--inner {
+                &:after {
+                    color: white;
+                    background-color: get-brand-color(primary, "500");
+                }
+            }
+        }
+    }
+
+    .swiper-button-prev {
+        .button--inner:after {
+            content: fa-content($fa-var-chevron-left);
+            line-height: 1px;
+            letter-spacing: 1px;
+            justify-content: flex-start;
+        }
+    }
+
+    .swiper-button-next {
+        margin-right: 3.5rem;
+    }
+
+    @media (min-width: 1440px) {
+        width: calc((100% / 12) * 13);
+        .swiper-button-next {
+            margin-right: calc((100% / 12) * 1);
+        }
+    }
+}

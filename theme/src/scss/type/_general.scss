@@ -1,0 +1,241 @@
+@use 'sass:math';
+@import url("https://use.typekit.net/bpy1bjk.css");
+
+@function strip-unit($number) {
+    @if type-of($number) == "number" and not unitless($number) {
+        @return math.div($number, $number * 0 + 1)
+    }
+    @return $number;
+}
+
+@mixin fluid-type($min-font-size, $max-font-size) {
+    $u1: unit(640px);
+    $u2: unit(1024px);
+    $u3: unit($min-font-size);
+    $u4: unit($max-font-size);
+
+    @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+        & {
+            font-size: $min-font-size;
+            line-height: calc($min-font-size * 1.15);
+            @media screen and (min-width: 640px) {
+                font-size: calc(
+                    #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+                        ((100vw - #{640px}) / #{strip-unit(1024px - 640px)})
+                );
+                line-height: calc(
+                    #{$min-font-size} * 1.15 + #{strip-unit($max-font-size - $min-font-size)} *
+                        ((100vw - #{640px}) / #{strip-unit(1024px - 640px)})
+                );
+            }
+            @media screen and (min-width: 1024px) {
+                font-size: $max-font-size;
+                line-height: calc($max-font-size * 1.15);
+            }
+        }
+    }
+}
+
+@mixin text-select {
+    // &::-moz-selection {
+    //     /* Code for Firefox */
+    //     color: get-gray-color(white);
+    //     background: get-brand-color(primary, base);
+    // }
+
+    // &::selection {
+    //     color: get-gray-color(white);
+    //     background: get-brand-color(primary, base);
+    // }
+}
+
+@mixin header-style {
+    font-family: "futura-pt", sans-serif;
+    color: get-brand-color(primary, "900");
+    font-weight: 700;
+}
+
+@mixin body-style {
+    font-family: "futura-pt", sans-serif;
+    font-weight: 400;
+    color: get-brand-color(primary, "900");
+
+    &.text-bold {
+        font-weight: 700;
+    }
+}
+
+@mixin nav-style {
+    font-family: "futura-pt", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: get-brand-color(primary, "900");
+
+    &:hover {
+        color: get-brand-color(primary, "500");
+    }
+}
+
+@mixin button-font-style {
+    font-family: "futura-pt", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+@mixin h1-text {
+    @include header-style;
+    @include fluid-type(38px, 60px);
+}
+
+@mixin h2-text {
+    @include header-style;
+    @include fluid-type(32px, 50px);
+}
+
+@mixin h3-text {
+    @include header-style;
+    @include fluid-type(26px, 40px);
+}
+
+@mixin h4-text {
+    @include header-style;
+    @include fluid-type(22px, 34px);
+}
+
+@mixin h5-text {
+    @include header-style;
+    @include fluid-type(20px, 26px);
+}
+
+@mixin h6-text {
+    @include header-style;
+    @include fluid-type(16px, 20px);
+}
+
+@mixin p-text {
+    @include body-style;
+    font-size: 16px;
+    line-height: 26px;
+}
+
+h1,
+.h1-text {
+    @include h1-text;
+}
+
+h2,
+.h2-text {
+    @include h2-text;
+}
+
+h3,
+.h3-text {
+    @include h3-text;
+}
+
+h4,
+.h4-text {
+    @include h4-text;
+}
+
+h5,
+.h5-text {
+    @include h5-text;
+}
+
+h6,
+.h6-text {
+    @include h6-text;
+}
+
+p,
+.p-text {
+    @include p-text;
+}
+
+.p-small {
+    @include p-text;
+    font-size: 12px;
+}
+
+.p-bold {
+    @include p-text;
+    font-weight: 700;
+}
+
+button,
+.button {
+    @include button-font-style;
+}
+
+.ref-text {
+    @include p-text;
+    font-size: 14px;
+    font-weight: 500;
+    color: get-gray-color("500");
+}
+
+.ul-text {
+    @include p-text;
+    margin-left: 1.5rem;
+    @apply space-y-4;
+    padding: 2rem 0;
+
+    li {
+        list-style-type: disc;
+    }
+}
+
+.richtext {
+    $headings: h1, h2, h3, h4, h5, h6;
+
+    @each $head in $headings {
+        #{$head} {
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    ul,
+    ol {
+        @apply py-4;
+        margin-left: 20px;
+        li {
+            @include p-text;
+        }
+    }
+
+    ul li {
+        list-style-type: disc;
+    }
+
+    ol li {
+        list-style-type: decimal;
+    }
+
+    a {
+        display: inline-block;
+        position: relative;
+        margin: 1.5rem 0;
+        font-weight: bold;
+        text-decoration: underline;
+
+        &:hover {
+            text-decoration: none;
+        }
+
+        // &:after {
+        //     content: fa-content($fa-var-chevron-right);
+        //     font-family: "font awesome 5 pro";
+        //     font-weight: 900;
+        //     position: absolute;
+        //     right: -3rem;
+        //     font-size: 1.4rem;
+        //     top: 50%;
+        //     transform: translateY(-50%);
+        //     transition: right 0.2s ease-in-out;
+        // }
+        // &:hover:after {
+        //     right: -4rem;
+        // }
+    }
+}

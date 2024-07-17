@@ -1,0 +1,134 @@
+$headings: h1, h2, h3, h4, h5, h6;
+
+.text-media--comp {
+    .text {
+        display: flex;
+        align-items: center;
+
+        .text--inner {
+            width: calc((100% / 6) * 4);
+            margin-left: calc((100% / 6) * 1);
+
+            @each $head in $headings {
+                #{$head} {
+                    margin-bottom: 4rem;
+                }
+            }
+
+            .button__arrow {
+                margin-top: 3rem;
+            }
+
+            .richtext {
+                a.button--main {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    .image .media--comp {
+        height: 100%;
+    }
+    &.image-left {
+        .image {
+            order: 1;
+        }
+        .text {
+            order: 2;
+        }
+    }
+
+    &.image-right {
+        .image {
+            order: 2;
+        }
+        .text {
+            order: 1;
+        }
+    }
+
+    &.large {
+        &.image-left {
+            .image {
+                width: calc((100% / 6) * 7);
+                margin-left: calc((-100% / 6) * 1);
+            }
+
+            .text {
+                width: calc((100% / 6) * 7);
+                background-color: orange;
+                .text--inner {
+                    width: calc(((100% / 6) * 4));
+                    margin-left: calc(((100% / 6) * 1) - 1.5rem);
+                }
+            }
+        }
+
+        &.image-right {
+            .image {
+                width: calc((100% / 6) * 7);
+            }
+
+            .text {
+                width: calc((100% / 6) * 7);
+                margin-left: calc((-100% / 6) * 1);
+                background-color: orange;
+            }
+        }
+    }
+
+    @media (max-width: $breakpoint--md) {
+        .image {
+            width: 100%;
+        }
+        &.image-left,
+        &.image-right {
+            .image {
+                order: 1;
+            }
+            .text {
+                order: 2;
+            }
+        }
+
+        &.large {
+            padding: 5rem 0;
+            background-color: get-brand-color(secondary, "500");
+            &.image-left {
+                .image {
+                    width: 100%;
+                    margin-left: 0;
+                    order: 2;
+
+                    .media--comp {
+                        aspect-ratio: 3/4 !important;
+                        padding: 1.5rem;
+                    }
+                }
+
+                .text {
+                    width: 100%;
+                    background-color: orange;
+                    order: 1;
+                    .text--inner {
+                        width: 100%;
+                        margin-left: 0;
+                        padding: 0 1.5rem;
+                    }
+                }
+            }
+
+            &.image-right {
+                .image {
+                    width: calc((100% / 6) * 7);
+                }
+
+                .text {
+                    width: calc((100% / 6) * 7);
+                    margin-left: calc((-100% / 6) * 1);
+                    background-color: orange;
+                }
+            }
+        }
+    }
+}

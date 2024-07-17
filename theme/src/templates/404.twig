@@ -1,0 +1,18 @@
+{% extends "base.twig" %}
+
+{% block content %}
+<div>
+    <section>
+        <div>
+            <div>
+                <div>404 error</div>
+                <h1>{{__('Oeps!')}}</h1>
+                <p>{{__('Sorry voor het ongemakt... We kunnen de pagina die je zoekt niet vinden.')}}</p>
+                <a title="Back to homepage" href="/">
+                    <span>{{__('Terug naar startpagina')}}</span>
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+version: '3'
+services:
+  apache:
+      build: 
+        context: .docker/apache
+        args: 
+          PROJECT_NAME: ${PROJECT_NAME}
+      container_name: ${PROJECT_NAME}_wp_apache
+      ports:
+        - 80:80
+      volumes:
+        - ./web:/var/www/${PROJECT_NAME}:delegated
+      depends_on:
+        - php
+  mysql:
+      image: mariadb
+      container_name: ${PROJECT_NAME}_wp_mysql
+      ports:
+        - 3306:3306
+      volumes:
+        - .docker/data/db:/var/lib/mysql:delegated
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: ${PROJECT_NAME}
+        MYSQL_USER: root
+        MYSQL_PASSWORD: root
+  php:
+      build: .docker/php
+      container_name: ${PROJECT_NAME}_wp_php
+      volumes:
+        - ./web:/var/www/${PROJECT_NAME}:delegated
+      depends_on:
+        - mysql
+  phpmyadmin:
+      depends_on:
+        - mysql
+      image: phpmyadmin/phpmyadmin
+      environment:
+        PMA_HOST: mysql
+        MYSQL_USER: root
+        MYSQL_PASSWORD: root
+        MYSQL_ROOT_PASSWORD: root
+      ports:
+        - 3002:80

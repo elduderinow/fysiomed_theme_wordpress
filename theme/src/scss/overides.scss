@@ -1,0 +1,12 @@
+.newproduct--comp.frontpage {
+    .product--card {
+        .card-body,
+        .card-buttons {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .card-date {
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,12 @@
+<div class="paragraph paragraph--quote">
+    <blockquote>
+        <p>{{ quote.text }}</p>
+        {% if quote.company or quote.author %}
+            <footer>
+               {% if quote.author %}{{ quote.author }}{% endif %}
+               {% if quote.company %} - {{ quote.company }} {% endif %}
+            </footer>
+        {% endif %}
+    </blockquote>
+</div>
+

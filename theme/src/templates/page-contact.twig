@@ -1,0 +1,37 @@
+{% extends "base.twig" %}
+{% block content %}
+	<div class="page-contact">
+		<div class="max-width px-6">
+			<div class="grid grid-cols-12">
+				<div class="col-span-12 lg:col-span-6 mt-20 mb-20">
+					<h2>{{__('Hoe u contact met ons kunt opnemen?')}}</h2>
+					
+					{{ function('do_shortcode', '[gravityform id="3" title="false"]') }}
+				</div>
+				<div class="col-span-12 lg:col-span-5 lg:col-start-8 mt-20 mb-20">
+					{% include './partials/components/media--comp.twig' with {image:'https://images.unsplash.com/photo-1685945719932-8048cbc68ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3088&q=80'} %}
+					<div class="contact-side-info">
+						<div class="opening-hours">
+							<p class="p-bold">{{__('Openingsuren winkel')}}</p>
+							<div class="hours flex flex-row justify-between pt-4">
+								<p>{{__('Ma - Vrij:')}}</p>
+								<p>9:00 - 12:30 & 13:30 - 17:00</p>
+							</div>
+
+						</div>
+						<div class="contact-wrapper bg-gray-200">
+							<h6 class="title">{{__('Contactgegevens')}}</h6>
+							<div class="flex flex-col pt-4 space-y-6">
+								<p class="address">Doornstraat 87/89<br>
+									2650 Edegem - België</p>
+								<a class="p-text phone" href="tel:+3234576676">+32 3 4576676</a>
+								<a class="p-text email" href="mailto:info@fysiomed.com">info@fysiomed.com</a>
+								<p>BTW nr: BE-0418.186.004</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock  %}

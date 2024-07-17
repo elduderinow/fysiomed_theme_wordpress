@@ -1,0 +1,38 @@
+.page-archive {
+    .text-media--comp {
+        .text {
+            .text--inner {
+                .main--text {
+                    display: -webkit-box;
+                    -webkit-line-clamp: 7;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                }
+            }
+        }
+
+        &:nth-child(2) {
+            background-color: get-gray-color("100");
+        }
+
+        // &.large {
+        //     &.image-left,
+        //     &.image-right {
+        //         .text {
+        //             background-color: get-gray-color("100");
+        //         }
+        //     }
+        // }
+
+        a.button--main {
+            font-weight: normal;
+            &:after {
+                display: none;
+            }
+        }
+    }
+
+    .product--card {
+        width: calc((100% / 3) - 1rem);
+    }
+}

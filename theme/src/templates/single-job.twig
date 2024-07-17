@@ -1,0 +1,73 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    <section class="hero">
+        <h1>{{ job.title }} ({{ job.reference }})</h1>
+    </section>
+
+    <section class="content">
+        <p>{{ job.profile }}</p>
+        <p>{{ job.offer }}</p>
+        <p>{{ job.competences }}</p>
+        <p>{{ job.extra }}</p>
+        <ul>
+            {% for item in job.languages %}
+                <li>{{ item.language }} - {{ item.languageLevel }}</li>
+            {% endfor %}
+        </ul>
+        <p>{{ job.companyDescription }}</p>
+        <p>CONTRACT:</p>
+        <ul>
+            {% for contract in job.contract %}
+                <li>{{ contract.title }}</li>
+            {% endfor %}
+        </ul>
+        <p>REGIME:</p>
+        <ul>
+            {% for regime in job.regime %}
+                <li>{{ regime.title }}</li>
+            {% endfor %}
+        </ul>
+
+        {% if (job.applyLink is defined) %}
+            {% include './partials/components/link.twig' with {'link': job.applyLink, 'classnames': 'hyperlink'} %}
+        {% endif %}
+        {% if (job.location is defined) %}
+            {% include './partials/cards/card-location.twig' with {'location': job.location} %}
+        {% endif %}
+        {% if (job.contact is defined) %}
+            {% include './partials/cards/card-person.twig' with {'person': job.contact} %}
+        {% endif %}
+    </section>
+
+
+    {% if (job.image is defined) %}
+        <section class="image">
+            {% include './partials/general/picture.twig' with { 'picture': job.image } %}
+        </section>
+    {% endif %}
+
+    <section class="paragraphs">
+        {% if job.paragraphs is defined %}
+            {% for paragraph in job.paragraphs %}
+                {% include './partials/paragraphs/paragraphs.twig' %}
+            {% endfor %}
+        {% endif %}
+    </section>
+
+    <section class="related">
+        <h3>Related:</h3>
+        {% include './partials/cards/card-job.twig' with {'job': job} %}
+    </section>
+
+
+    {% block footer %}
+        {% include './partials/general/footer.twig' %}
+    {% endblock %}
+
+    <hr/>
+    <pre class="dump">
+    {{ dump(job) }}
+    </pre>
+    <hr/>
+{% endblock %}

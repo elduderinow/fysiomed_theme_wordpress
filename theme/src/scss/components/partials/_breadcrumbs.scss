@@ -1,0 +1,28 @@
+.breadcrumbs {
+    nav.woocommerce-breadcrumb {
+        @include body-style;
+        color: get-brand-color(primary, "500");
+
+        span {
+            color: get-gray-color('300');
+            &:last-child {
+                padding-right: 1rem;
+            }
+        }
+
+        a {
+            color: get-brand-color(primary, "900");
+            padding: 0 1rem;
+            text-decoration: underline;
+            font-size: 14px;
+
+            &:first-child {
+                padding-left: 0;
+            }
+
+            &:hover {
+                color: get-brand-color(primary, "500");
+            }
+        }
+    }
+}

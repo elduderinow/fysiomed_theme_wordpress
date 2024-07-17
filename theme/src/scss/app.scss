@@ -1,0 +1,11 @@
+//GLOBAL APP SCSS FILE - only imports from bundled subfolder files/dirs
+
+@import
+    'config/config',
+    'type/type',
+    'base/base',
+    'objects/objects',
+    'layout/layout',
+    'components/components',
+    'pages/pages',
+    './overides';

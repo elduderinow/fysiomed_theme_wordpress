@@ -1,0 +1,62 @@
+<article class="card card-product h-full hover:shadow-lg transition-shadow slide--item">
+	{{ fn('timber_set_product', product.wcProduct) }}
+	<div class="media h-full">
+		<div
+			class="media-content flex flex-col h-full">
+			{# <div class="flex justify-end p-3">
+							<div class="heart--icon"></div>
+						</div> #}
+			<a class="content" href="{{product.permalink}}">
+				<div class="product__image">
+					{% do action('woocommerce_before_shop_loop_item_title') %}
+				</div>
+				<div class="product__info flex flex-col flex-wrap space-y-2 p-6">
+					<p class="ref-text">
+						{% if product.wcProduct.get_sku() %}
+							{{product.wcProduct.get_sku()}}
+						{% else %}
+							<br/>
+						{% endif %}
+					</p>
+					<p class="p-text">
+						{% if (product.productTags) %}
+							{% for tag in product.productTags %}
+								{{ tag.name }}
+								{% if (not loop.last) %}
+									<span>&nbsp;|&nbsp;</span>
+								{% endif %}
+							{% endfor %}
+						{% else %}
+							<br/>
+						{% endif %}
+					</p>
+					<h6 class="h6-text title">
+						{{ product.title }}
+					</h6>
+				</div>
+			</a>
+			{% if current_user %}
+				<div class="product__buy flex justify-between items-center">
+					{% do action( 'woocommerce_after_shop_loop_item_title')%}
+
+					{% if export_customer not in current_user.roles|keys|keys %}
+						{% if product.hasVariants() == true %}
+							<a href="{{product.permalink}}" class="button--main button__secondary" type="submit" name="add-to-cart" value="{{product.id}}" class="single_add_to_cart_button button alt wp-element-button">
+								{{__('selecteer opties')}}
+							</a>
+						{% else %}
+							<form class="cart" action="{{product.link}}" method="post" enctype="multipart/form-data">
+								<div class="order-buttons">
+									<button class="button--main button__secondary" type="submit" name="add-to-cart" value="{{product.id}}" class="single_add_to_cart_button button alt wp-element-button">
+										<i class="fa-regular fa-plus"></i>
+										<i class="fas fa-truck"></i>
+									</button>
+								</div>
+							</form>
+						{% endif %}
+					{% endif %}
+				</div>
+			{% endif %}
+		</div>
+	</div>
+</article>

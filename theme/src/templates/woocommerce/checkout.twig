@@ -1,0 +1,32 @@
+{% extends "base.twig" %}
+{% block content %}
+	<div class="woo--cart-page woo--checkout-page">
+		<div class="max-width px-6">
+			<div class="grid grid-cols-12">
+				<div class="col-span-12">
+					{% do action('woocommerce_before_shop_loop') %}
+				</div>
+				<div
+					class="col-span-12 lg:col-span-7 mt-20 pb-20">
+					{# <h3 class="h3-text">Bestellen</h3> #}
+					{{ function('do_shortcode', '[woocommerce_checkout]') }}
+				</div>
+
+				<div class="delivery-terms col-span-12 lg:col-span-4 lg:col-start-9">
+					<div class="delivery--inner mt-20">
+						<h4 class="h4-text title mb-4">{{__('Leverings-voorwaarden')}}</h4>
+						<p>{{__('Levering is GRATIS voor bestellingen van minimum € 242 BTW excl. Voor bestellingen lager dan € 242 BTW excl., worden transportkosten aangerekend. Voor pakketten binnen reguliere afmetingen worden volgende tarieven toegepast (per 30 kg) voor levering in:')}}</p>
+						<ul class="ul-text">
+							<li>{{__('België: € 14,50 BTW excl.')}}</li>
+							<li>{{__('Nederland, Luxemburg, Duitsland: € 18,15 BTW incl.')}}</li>
+							<li>{{__('Frankrijk: € 27,23 BTW excl.')}}</li>
+						</ul>
+						<p>{{__('Voor buitenmaatse pakketten dient prijs gevraagd te worden.')}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% do action('woocommerce_after_shop_loop') %}
+		{% do action('woocommerce_after_main_content') %}
+	</div>
+{% endblock  %}

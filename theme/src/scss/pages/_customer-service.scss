@@ -1,0 +1,36 @@
+.customer-service {
+    .customer-service--navigation {
+        border-right: 1px solid get-gray-color("200");
+
+        .customer-nav--web {
+            ul {
+                @apply space-y-4;
+
+                li {
+                    a {
+                        @include nav-style;
+                    }
+                }
+            }
+        }
+        .customer-nav--mobile {
+            margin-bottom: 2rem;
+            padding-right: 1rem;
+            background-color: get-brand-color(primary, "500");
+
+            select {
+                width: 100%;
+                background-color: get-brand-color(primary, "500");
+                padding: 1.5rem 1rem;
+                @include p-text;
+                font-weight: 700;
+                color: get-gray-color("white");
+
+                option {
+                    @include p-text;
+                    color: get-gray-color("white");
+                }
+            }
+        }
+    }
+}
